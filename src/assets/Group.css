@@ -1,0 +1,46 @@
+@font-face {
+  font-family: PoetsenOne;
+  src: url('../assets/Fonts/PoetsenOne-Regular.ttf');
+}
+@font-face {
+  font-family: YT_font;
+  src: url('../assets/Fonts/YT_font.ttf');
+}
+
+/* General styles */
+body {
+  background-color: #333;
+}
+.io-box {
+  border: 4px solid red;
+  height: 50vh;
+  width: 50vw;
+  position: absolute;
+  top: calc(50% - 25vh);
+  left: calc(50% - 25vw);
+  color: #e6ecf0;
+  font-family: YT_font, sans-serif;
+}
+.io-box hr {
+  margin: 0;
+  border: 2px solid black
+}
+/* Output box styles */
+.output {
+  //border: 4px solid yellow;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+/* Input box styles */
+.input {
+  border: 4px solid green;
+  margin: 0 1.26vw;
+}
+.io-box input {
+  font-size: 30px;
+  width: 100%;
+}
