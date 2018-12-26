@@ -30,9 +30,9 @@ body{
   flex-basis: 0;
 }
 .home .left-homepage div {
-  //flex-grow: 1;
+  /* flex-grow: 1; */
   margin-top: 28px;
-  //margin-bottom: 5vh;
+  /* margin-bottom: 5vh; */
 }
 .home .left-homepage div svg{
   padding-right: 16px;
@@ -40,9 +40,9 @@ body{
 .home .left-homepage div span {
   color: #e6ecf0;
   text-decoration: none;
-  //flex-grow: 1;
+  /* flex-grow: 1; */
   margin-top: 5vh;
-  //margin-bottom: 5vh;
+  /* margin-bottom: 5vh; */
 }
 
 /* Right page styles */
@@ -101,7 +101,7 @@ body{
   transition: background .5s ease-in-out;
 }
 .create-button:hover {
-  background-position: -100% -100%;
+  background-position: -99.9% -100%;
   cursor: pointer;
 }
 .join-button:hover {

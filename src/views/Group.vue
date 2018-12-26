@@ -1,8 +1,7 @@
 <template>
   <div id='particles-js'>
     <div class="io-box">
-      <div class="output">
-        Some other output text
+      <div id="output">
       </div>
       <hr>
         <input type="text" name="" value="">

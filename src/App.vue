@@ -31,6 +31,9 @@ export default {
   justify-content: ;
   padding-left: 5px;
   padding-right: 5px;
+  background-color: white;
+  position: fixed;
+  width: 100%;
 }
 .nav-bar > * {
   flex-grow: 2;
