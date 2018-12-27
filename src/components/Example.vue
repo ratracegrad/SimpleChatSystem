@@ -6,7 +6,7 @@
 <script>
 export default {
   name: 'Example',
-  data: function(){ //Anything in the document
+  data() { //Anything in the document
     return{
     }
   },

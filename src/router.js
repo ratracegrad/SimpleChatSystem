@@ -28,8 +28,16 @@ export default new Router({
     },
     {
       path: '/group',
-      name: 'Group chat',
+      name: 'group',
       component: Group,
+      props: true,
+      beforeEnter: (to, from, next) => {
+        if (to.params.name){
+          next()
+        } else{
+          next({name: 'home'})
+        }
+      }
     },
   ],
 });

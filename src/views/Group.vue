@@ -1,25 +1,31 @@
 <template>
   <div id='particles-js'>
-    <div class="io-box">
+    <div id="io-box">
       <div id="output">
+        <p v-if="messages.length === 0">This chat is empty. YEET!</p>
+        <div v-for="message in messages" :key="message.id">
+          <span id="message">{{ message.username }}: {{ message.message }} {{ message.timestamp }}</span>
+        </div>
       </div>
       <hr>
-        <input type="text" name="" value="">
+        <NewMessage :name="name"></NewMessage>
     </div>
   </div>
 </template>
 
 <script>
+import NewMessage from '@/components/NewMessage'
+import fb from '@/firebase/init'
+
 export default {
-  name: 'ParticlesJS',
-
-  mounted () {
-    require('particles.js')
-    this.$nextTick(() => {
-      this.initParticlesJS()
-    })
+  name: 'group',
+  props: ['name'],
+  components: { NewMessage },
+  data() {
+    return{
+      messages: []
+    }
   },
-
   methods: {
     initParticlesJS () {
       /* eslint-disable */
@@ -136,7 +142,32 @@ export default {
     }
   },
   computed: {
-
+  },
+  created() {
+    let ref = fb.collection('messages').orderBy('timestamp')
+    ref.onSnapshot(snapshot => {
+      snapshot.docChanges().forEach(change => {
+        if (change.type === "added"){
+          let doc = change.doc
+          this.messages.push({
+            id: doc.id,
+            username: doc.data().username,
+            message: doc.data().message,
+            timestamp: Date.now()
+          })
+        }
+      })
+    })
+    document.getElementById("output").scrollTop = document.getElementById("output").scrollHeight
+  },
+  mounted() {
+    require('particles.js')
+    this.$nextTick(() => {
+      this.initParticlesJS()
+    })
+  },
+  updated() {
+    document.getElementById("output").scrollTop = document.getElementById("output").scrollHeight
   }
 }
 </script>
