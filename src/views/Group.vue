@@ -158,7 +158,10 @@ export default {
         }
       })
     })
-    document.getElementById("output").scrollTop = document.getElementById("output").scrollHeight
+    try{
+      document.getElementById("output").scrollTop = document.getElementById("output").scrollHeight
+    } catch(TypeError){
+    }
   },
   mounted() {
     require('particles.js')
@@ -167,7 +170,10 @@ export default {
     })
   },
   updated() {
-    document.getElementById("output").scrollTop = document.getElementById("output").scrollHeight
+    try{
+      document.getElementById("output").scrollTop = document.getElementById("output").scrollHeight
+    } catch(TypeError){
+    }
   }
 }
 </script>
