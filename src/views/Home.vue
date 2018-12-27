@@ -40,6 +40,11 @@
             <a>Create new chat room</a>
           </div>
         </div>
+        <form @submit.prevent="login">
+          <input type="text" placeholder="Username" name="username" autocomplete="off" v-model="username" />
+          <p v-if="errorText">{{ errorText }}</p>
+          <button value="submit">Enter Chat</button>
+        </form>
     </div>
   </div>
 </template>
@@ -48,11 +53,20 @@
 
 export default {
   name: 'home',
-  data: function(){ //Anything in the document
+  data() { //Anything in the document
     return{
+      username: "",
+      errorText: null,
     }
   },
-  methods: { //Normal function
+  methods: {
+    login() {
+      if (this.username){
+        this.$router.push({name: 'group', params: {name: this.username}})
+      } else{
+        this.errorText = "Please enter a username first!"
+      }
+    }
   },
   computed: { //Functions with cache
   },

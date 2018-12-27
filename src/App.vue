@@ -3,7 +3,7 @@
     <div class="nav-bar">
         <p class="menu"><a>Home</a></p>
         <p class="website-title"><a href="/">Simple</a></p>
-        <p class="logout"><a>Logout</a></p>
+        <p class="logout"><a href="/">Logout</a></p>
     </div>
     <router-view />
     <particlesJS/>
@@ -45,16 +45,16 @@ export default {
   padding-top: 10px;
   padding-bottom: 15px;
 }
-.website-title a {
-  color: #000;
-  text-decoration: none;
-}
 .website-title a:hover, .menu a:hover, .logout a:hover {
   cursor: pointer;
 }
 .nav-bar > p {
   text-align: center;
   margin: 0;
+}
+.nav-bar > p > a {
+  text-decoration: none;
+  color: #000;
 }
 .nav-bar .logout {
   font-family: serif;
