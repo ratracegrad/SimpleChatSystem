@@ -125,15 +125,16 @@ body{
   opacity: 0.6;
 }
 form input {
-  caret-color: #3fb2b8;
+  caret-color: #b89c3f;
   outline-width: 0px;
   font-size: 40px;
   background: transparent;
   color: #e6ecf0;
   border: none;
-  border-bottom: 5px solid #3fb2b8;
+  border-bottom: 5px solid #b89c3f;
 }
 form button {
+  outline-width: 0px;
   margin-top: 40px;
   margin-left: 100px;
   display: block;
@@ -141,9 +142,14 @@ form button {
   height: 70px;
   font-size: 28px;
   font-family: PoetsenOne;
-  background-color: #3fb2b8;
+  background-color: #b89c3f;
   color: #e6ecf0;
   border: none;
   border-radius: 12px;
   cursor: pointer;
+  user-select: none;
+}
+form button:hover {
+  background-color: #886c0f;
+  color: #b6bcc0;
 }
