@@ -96,6 +96,7 @@ body{
 
 /* Right button animations */
 .create-button, .join-button {
+  user-select: none;
   background-size: 200% 100%;
   background-image: linear-gradient(to right, transparent 50%, #333 50%);
   transition: background .5s ease-in-out;
@@ -106,5 +107,43 @@ body{
 }
 .join-button:hover {
   background-position: 100% 100%;
+  cursor: pointer;
+}
+
+/* Popup */
+.popup {
+  position: absolute;
+  z-index: 1;
+  margin-left: calc(50vw - 200px);
+  margin-top: calc(50vh - 23.5px);
+}
+#cancel {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.6;
+}
+form input {
+  caret-color: #3fb2b8;
+  outline-width: 0px;
+  font-size: 40px;
+  background: transparent;
+  color: #e6ecf0;
+  border: none;
+  border-bottom: 5px solid #3fb2b8;
+}
+form button {
+  margin-top: 40px;
+  margin-left: 100px;
+  display: block;
+  width: 200px;
+  height: 70px;
+  font-size: 28px;
+  font-family: PoetsenOne;
+  background-color: #3fb2b8;
+  color: #e6ecf0;
+  border: none;
+  border-radius: 12px;
   cursor: pointer;
 }

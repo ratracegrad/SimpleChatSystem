@@ -3,49 +3,54 @@
     <div class="left-homepage">
       <div>
         <div>
-            <svg height="28" width="28">
-              <circle cx="14" cy="14" r="14" fill="#b89c3f" />
-            </svg>
-            <span>Find My Group</span>
-          </div>
+          <svg height="28" width="28">
+            <circle cx="14" cy="14" r="14" fill="#b89c3f" />
+          </svg>
+          <span>Find My Group</span>
+        </div>
         <div>
-            <svg height="28" width="28">
-              <circle cx="14" cy="14" r="14" fill="#b89c3f" />
-            </svg>
-            <span>Create New Chat Room</span>
-          </div>
+          <svg height="28" width="28">
+            <circle cx="14" cy="14" r="14" fill="#b89c3f" />
+          </svg>
+          <span>Create New Chat Room</span>
+        </div>
         <div>
-            <svg height="28" width="28">
-              <circle cx="14" cy="14" r="14" fill="#b89c3f" />
-            </svg>
-            <span>Quickstart Guide</span>
-          </div>
+          <svg height="28" width="28">
+            <circle cx="14" cy="14" r="14" fill="#b89c3f" />
+          </svg>
+          <span>Quickstart Guide</span>
+        </div>
         <div>
-            <svg height="28" width="28">
-              <circle cx="14" cy="14" r="14" fill="#b89c3f" />
-            </svg>
-            <span>About Us</span>
-          </div>
+          <svg height="28" width="28">
+            <circle cx="14" cy="14" r="14" fill="#b89c3f" />
+          </svg>
+          <span>About Us</span>
+        </div>
       </div>
     </div>
     <div class="right-homepage">
-        <div class="right-title">
-          <span>Group communcation made simple. Get productive now</span>
+      <div class="right-title">
+        <span>Group communcation made simple. Get productive now</span>
+      </div>
+      <div class="right-buttons">
+        <div class="join-button" v-on:click="join_room">
+          Join existing chat room
         </div>
-        <div class="right-buttons">
-          <div class="join-button">
-            <a>Join existing chat room</a>
-          </div>
-          <div class="create-button">
-            <a>Create new chat room</a>
-          </div>
+        <div class="create-button" v-on:click="create_room">
+          Create new chat room
         </div>
-        <form @submit.prevent="login">
-          <input type="text" placeholder="Username" name="username" autocomplete="off" v-model="username" />
-          <p v-if="errorText">{{ errorText }}</p>
-          <button value="submit">Enter Chat</button>
-        </form>
+      </div>
     </div>
+    <form @submit.prevent="enter" v-if="enterRoom" class="popup">
+      <input type="text" placeholder="Group Name" name="groupName" autocomplete="off" v-model="groupName" />
+      <button value="submit">{{ status }}</button>
+    </form>
+    <form @submit.prevent="login" v-if="enterName" class="popup">
+      <input type="text" placeholder="Username" name="username" autocomplete="off" v-model="username" />
+      <p v-if="errorText">{{ errorText }}</p>
+      <button value="submit">Enter Chat</button>
+    </form>
+    <div id="cancel" v-if="enterRoom || enterName" v-on:click="cancel"></div>
   </div>
 </template>
 
@@ -55,8 +60,12 @@ export default {
   name: 'home',
   data() { //Anything in the document
     return{
-      username: "",
+      username: null,
+      groupName: null,
       errorText: null,
+      enterName: false,
+      enterRoom: false,
+      status: null,
     }
   },
   methods: {
@@ -66,6 +75,26 @@ export default {
       } else{
         this.errorText = "Please enter a username first!"
       }
+    },
+    join_room() {
+      this.status = "Join Room"
+      this.enterRoom = true
+    },
+    create_room() {
+      this.status = "Create Room"
+      this.enterRoom = true
+    },
+    enter() {
+      if (this.groupName){
+        this.enterRoom = false
+        this.enterName = true
+      }
+    },
+    cancel() {
+      this.enterRoom = false
+      this.enterName = false
+      this.username = null
+      this.groupName = null
     }
   },
   computed: { //Functions with cache

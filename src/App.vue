@@ -39,6 +39,7 @@ export default {
   flex-grow: 2;
 }
 .website-title {
+  user-select: none;
   font-family: PoetsenOne, sans-serif;
   font-size: 50px;
   line-height: 1;

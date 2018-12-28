@@ -10,7 +10,7 @@
     <p class='text' style="background-color: #b85f3f; color: #333;">Frozen Frozen Frozen #b85f3f</p>
     <p class='text' style="background-color: #813fb8; color: #e6ecf0;">Frozen Frozen Frozen #813fb8</p>
     <p class='text' style="background-color: #e6ecf0; color: #813fb8;">Frozen Frozen Frozen #813fb8</p>
-    <p class='text' style="background-color: #333; color: #813fb8;">Frozen Frozen Frozen #813fb8</p>
+    <p class='text' style="background-color: #333; color: #813fb8;">Love Is An Open Door #813fb8</p>
     <p class='text' style="background-color: #813fb8; color: #333;">Frozen Frozen Frozen #813fb8</p>
     <p class='text' style="background-color: #b89c3f; color: #e6ecf0;">Frozen Frozen Frozen #b89c3f</p>
     <p class='text' style="background-color: #e6ecf0; color: #b89c3f;">Frozen Frozen Frozen #b89c3f</p>
