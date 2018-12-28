@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="nav-bar">
-        <p class="menu"><a>Home</a></p>
+        <p class="menu"><a href="/">Home</a></p>
         <p class="website-title"><a href="/">Simple</a></p>
         <p class="logout"><a href="/">Logout</a></p>
     </div>
