@@ -1,14 +1,20 @@
 <template>
   <div id='particles-js'>
+    <form @submit.prevent="login" v-if="!enterName" class="popup">
+      <input type="text" placeholder="Username" name="username" autocomplete="off" ref="focus" v-model="username" />
+      <div v-if="errorText" id="errorText">{{ errorText }}</div>
+      <button value="submit">Enter Chat</button>
+    </form>
+    <div id="cancel" v-if="!enterName"></div>
     <div id="io-box">
       <div id="output">
         <p v-if="messages.length === 0">This chat is empty. YEET!</p>
         <div v-for="message in messages" :key="message.id">
-          <span id="message">{{ message.username }}: {{ message.message }} {{ message.timestamp }}</span>
+          <span id="message">{{ message.username }}: {{ message.message }}</span>
         </div>
       </div>
       <hr>
-        <NewMessage :name="name"></NewMessage>
+        <NewMessage :name="username"></NewMessage>
     </div>
   </div>
 </template>
@@ -23,11 +29,14 @@ export default {
   components: { NewMessage },
   data() {
     return{
+      username: null,
+      errorText: null,
+      enterName: false,
       messages: []
     }
   },
   methods: {
-    initParticlesJS () {
+    initParticlesJS() {
       /* eslint-disable */
       particlesJS('particles-js', {
         'particles': {
@@ -139,7 +148,15 @@ export default {
         },
         'retina_detect': true
       })
-    }
+    },
+    login() {
+      if (this.username){
+        this.enterName = true
+      } else{
+        this.errorText = "Please enter a username first!"
+      }
+      this.$refs.focus.focus()
+    },
   },
   computed: {
   },
@@ -168,6 +185,7 @@ export default {
     this.$nextTick(() => {
       this.initParticlesJS()
     })
+    this.$refs.focus.focus()
   },
   updated() {
     try{

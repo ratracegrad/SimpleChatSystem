@@ -6,17 +6,17 @@
 <script>
 export default {
   name: 'Example',
-  data() { //Anything in the document
-    return{
+  data() { // Anything in the document
+    return {
     }
   },
-  methods: { //Normal function
+  methods: { // Normal function
   },
-  computed: { //Functions with cache
+  computed: { // Functions with cache
   },
-  props: { //Short for properties //Props are passed through when component is called
-    messageHere:{
-      default: "Error 404" //If no alternative value is given from parent view
+  props: { // Short for properties // Props are passed through when component is called
+    messageHere: {
+      default: "Error 404" // If no alternative value is given from parent view
     }
   },
   created () { // When page is first created

@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import testBench from './views/testBench.vue';
 import Group from './views/Group.vue';
+import Rooms from './views/Rooms.vue';
 
 Vue.use(Router);
 
@@ -30,14 +31,11 @@ export default new Router({
       path: '/group',
       name: 'group',
       component: Group,
-      props: true,
-      beforeEnter: (to, from, next) => {
-        if (to.params.name){
-          next()
-        } else{
-          next({name: 'home'})
-        }
-      }
     },
+    {
+      path: '/rooms',
+      name: 'rooms',
+      component: Rooms,
+    }
   ],
 });

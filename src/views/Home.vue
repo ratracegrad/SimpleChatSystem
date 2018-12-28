@@ -41,16 +41,7 @@
         </div>
       </div>
     </div>
-    <form @submit.prevent="enter" v-if="enterRoom" class="popup">
-      <input type="text" placeholder="Group Name" name="groupName" autocomplete="off" v-model="groupName" />
-      <button value="submit">{{ status }}</button>
-    </form>
-    <form @submit.prevent="login" v-if="enterName" class="popup">
-      <input type="text" placeholder="Username" name="username" autocomplete="off" v-model="username" />
-      <p v-if="errorText">{{ errorText }}</p>
-      <button value="submit">Enter Chat</button>
-    </form>
-    <div id="cancel" v-if="enterRoom || enterName" v-on:click="cancel"></div>
+    <div id="cancel" v-if="enterRoom"></div>
   </div>
 </template>
 
@@ -58,50 +49,20 @@
 
 export default {
   name: 'home',
-  data() { //Anything in the document
-    return{
-      username: null,
+  data() {
+    return {
       groupName: null,
-      errorText: null,
-      enterName: false,
       enterRoom: false,
       status: null,
     }
   },
   methods: {
-    login() {
-      if (this.username){
-        this.$router.push({name: 'group', params: {name: this.username}})
-      } else{
-        this.errorText = "Please enter a username first!"
-      }
-    },
-    join_room() {
-      this.status = "Join Room"
-      this.enterRoom = true
-    },
-    create_room() {
-      this.status = "Create Room"
-      this.enterRoom = true
-    },
-    enter() {
-      if (this.groupName){
-        this.enterRoom = false
-        this.enterName = true
-      }
-    },
-    cancel() {
-      this.enterRoom = false
-      this.enterName = false
-      this.username = null
-      this.groupName = null
-    }
   },
-  computed: { //Functions with cache
+  computed: { // Functions with cache
   },
-  props: { //Short for properties //Props are passed through when component is called
-    messageHere:{
-      default: "Error 404" //If no alternative value is given from parent view
+  props: { // Short for properties // Props are passed through when component is called
+    messageHere: {
+      default: "Error 404" // If no alternative value is given from parent view
     }
   },
   created () { // When page is first created

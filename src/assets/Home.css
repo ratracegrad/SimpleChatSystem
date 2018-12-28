@@ -6,6 +6,7 @@
 /* General styles */
 body{
   margin: 0;
+  overflow: hidden;
 }
 .home {
   display: flex;
@@ -28,6 +29,7 @@ body{
   justify-content: center;
   align-items: center;
   flex-basis: 0;
+  margin-top: 75px;
 }
 .home .left-homepage div {
   /* flex-grow: 1; */
@@ -56,6 +58,7 @@ body{
   justify-content: center;
   align-items: center;
   align-content: center;
+  margin-top: 75px;
 }
 .home .right-homepage .right-title {
   font-family: PoetsenOne, sans-serif;
@@ -113,7 +116,7 @@ body{
 /* Popup */
 .popup {
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   margin-left: calc(50vw - 200px);
   margin-top: calc(50vh - 23.5px);
 }
@@ -123,6 +126,7 @@ body{
   height: 100vh;
   background-color: black;
   opacity: 0.6;
+  z-index: 2;
 }
 form input {
   caret-color: #b89c3f;
@@ -152,4 +156,12 @@ form button {
 form button:hover {
   background-color: #886c0f;
   color: #b6bcc0;
+}
+#errorText {
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 80px;
+  color: #b83f75;
+  font-family: sans-serif;
+  font-size: 18px;
 }
