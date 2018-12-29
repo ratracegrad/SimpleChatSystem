@@ -15,7 +15,6 @@ export default {
 
   methods: {
     initParticlesJS () {
-      /* eslint-disable */
       particlesJS('particles-js', {
         'particles': {
           'number': {

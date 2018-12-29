@@ -30,6 +30,7 @@ export default new Router({
     {
       path: '/group',
       name: 'group',
+      props: true,
       component: Group,
     },
     {

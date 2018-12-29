@@ -11,7 +11,7 @@ import fb from '@/firebase/init'
 
 export default {
   name: 'NewMessage',
-  props: ['name'],
+  props: ['username', 'roomName'],
   data() {
     return{
       newMessage: null,
@@ -19,10 +19,11 @@ export default {
   },
   methods: {
     createMessage() {
-      if (this.newMessage){
+      if (this.newMessage && this.username){
         fb.collection('messages').add({
+          room: this.roomName,
+          username: this.username,
           message: this.newMessage,
-          username: this.name,
           timestamp: Date.now()
         }).catch(err => {
           console.log(err)

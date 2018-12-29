@@ -1,12 +1,9 @@
 <template>
   <div class="page">
     <div class="nav-bar">
-        <p class="menu"><a href="/">Home</a></p>
-        <p class="website-title"><a href="/">Simple</a></p>
-        <p class="logout"><a href="/">Logout</a></p>
+        <div class="website-title" v-on:click="redirect">Simple</div>
     </div>
     <router-view />
-    <particlesJS/>
   </div>
 </template>
 
@@ -15,7 +12,12 @@ import particlesJS from './components/particlesJS'
 
 export default {
   name: 'app',
-  components: { particlesJS }
+  components: { particlesJS },
+  methods: {
+    redirect() {
+      this.$router.push({name: 'home'})
+    }
+  }
 }
 </script>
 
@@ -29,14 +31,10 @@ export default {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: ;
-  padding-left: 5px;
-  padding-right: 5px;
   background-color: white;
-  position: fixed;
+  position: sticky;
+  top: 0px;
   width: 100%;
-}
-.nav-bar > * {
-  flex-grow: 2;
 }
 .website-title {
   user-select: none;
@@ -45,27 +43,12 @@ export default {
   line-height: 1;
   padding-top: 10px;
   padding-bottom: 15px;
-}
-.website-title a:hover, .menu a:hover, .logout a:hover {
-  cursor: pointer;
-}
-.nav-bar > p {
   text-align: center;
   margin: 0;
-}
-.nav-bar > p > a {
-  text-decoration: none;
   color: #000;
+  flex-grow: 2;
 }
-.nav-bar .logout {
-  font-family: serif;
-  align-self: center;
-  text-align: left;
-  font-size: 20px;
-}
-.nav-bar .menu {
-  align-self: center;
-  text-align: right;
-  font-size: 20px;
+.website-title:hover {
+  cursor: pointer;
 }
 </style>
