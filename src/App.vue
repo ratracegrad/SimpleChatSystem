@@ -30,7 +30,6 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: ;
   background-color: white;
   position: sticky;
   top: 0px;

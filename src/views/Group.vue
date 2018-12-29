@@ -6,7 +6,7 @@
       <button value="submit">Enter Chat</button>
     </form>
     <div id="cancel" v-if="!enterName"></div>
-    <div id="roomName">Room: {{ roomName }}</div>
+    <div id="room-name">Room: {{ roomName }}</div>
     <div id="io-box">
       <div id="output">
         <div v-if="messages.length === 0" class="message">This chat is empty. YEET!</div>
@@ -225,7 +225,7 @@ body {
 }
 
 /* Room name */
-#roomName {
+#room-name {
   position: absolute;
   top: calc(42.5% - 30vh);
   left: calc(50% - 40vw);
