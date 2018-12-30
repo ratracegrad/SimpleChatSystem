@@ -1,7 +1,9 @@
 <template>
   <div class="page">
     <div class="nav-bar">
-        <div class="website-title" v-on:click="redirect">Simple</div>
+      <div class="about-us" v-on:click="redirect"><span>About Us</span></div>
+      <div class="website-title" v-on:click="redirect"><span>Simple</span></div>
+      <div class="contact-us" v-on:click="redirect"><span>Contact Us</span></div>
     </div>
     <router-view />
   </div>
@@ -39,19 +41,31 @@ export default {
   position: relative;
   width: 100%;
 }
+.nav-bar > div {
+  flex-grow: 2;
+}
+.nav-bar > div > span {
+  cursor: pointer;
+}
+.nav-bar .about-us {
+  align-self: center;
+  text-align: right;
+  font-size: 20px;
+}
+.nav-bar .contact-us {
+  font-family: serif;
+  align-self: center;
+  text-align: left;
+  font-size: 20px;
+}
 .website-title {
   user-select: none;
   font-family: PoetsenOne, sans-serif;
   font-size: 50px;
-  line-height: 1;
-  padding-top: 10px;
-  padding-bottom: 15px;
   text-align: center;
   margin: 0;
   color: #000;
-  flex-grow: 2;
-}
-.website-title:hover {
-  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 10px;
 }
 </style>
