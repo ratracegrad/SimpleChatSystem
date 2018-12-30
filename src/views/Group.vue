@@ -10,7 +10,7 @@
     <div id="io-box">
       <div id="output">
         <div v-if="messages.length === 0" class="message">This chat is empty. YEET!</div>
-        <div v-for="message in messages" :key="message.id">
+        <div v-for="message in messages">
           <div class="message">{{ message.username }}: {{ message.message }}</div>
         </div>
       </div>
@@ -62,7 +62,6 @@ export default {
       snapshot.docChanges().forEach(change => {
         if (change.type === "added" && change.doc.data().room === this.roomName){
           this.messages.push({
-            id: change.doc.id,
             username: change.doc.data().username,
             message: change.doc.data().message,
             timestamp: Date.now()

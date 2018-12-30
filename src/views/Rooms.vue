@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script scoped>
+<script>
 import fb from '@/firebase/init'
 import particles from '@/components/particlesJS.vue'
 
