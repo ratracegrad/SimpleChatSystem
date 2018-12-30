@@ -38,6 +38,7 @@ export default {
       this.askPassword = true
       this.$nextTick(() => {
         this.$refs.passwordFocus.focus()
+        document.getElementsByClassName("cancel")[0].style.top = document.scrollTop
       })
     },
     join2() {
@@ -86,7 +87,7 @@ export default {
     for (var i = 0; i < document.getElementsByClassName("room").length - 1; i++) {
       document.getElementsByClassName("room")[i].style.borderBottom = "none"
     }
-    document.getElementsByClassName("room")[document.getElementsByClassName("room").length - 1].style.borderBottom = "5px solid #b83f75"
+    document.getElementsByClassName("room")[document.getElementsByClassName("room").length - 1].style.borderBottom = "5px solid #b89c3f"
   }
 }
 </script>
@@ -108,9 +109,9 @@ input {
   height: 60px;
   background-color: #3fb2b8;
   font-size: 50px;
-  border-top: 5px solid #b83f75;
-  border-left: 5px solid #b83f75;
-  border-right: 5px solid #b83f75;
+  border-top: 5px solid #b89c3f;
+  border-left: 5px solid #b89c3f;
+  border-right: 5px solid #b89c3f;
   padding-left: 10px;
 }
 .room:hover {

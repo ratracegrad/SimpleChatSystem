@@ -155,14 +155,14 @@ body {
 
 /* Popup */
 .popup {
-  position: absolute;
+  position: fixed;
   z-index: 3;
   margin-left: calc(50vw - 200px);
   margin-top: calc(50vh - 75px - 23.5px);
 }
 .cancel {
   top: 0px;
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   background-color: black;
