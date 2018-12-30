@@ -8,11 +8,9 @@
 </template>
 
 <script>
-import particlesJS from './components/particlesJS'
 
 export default {
   name: 'app',
-  components: { particlesJS },
   methods: {
     redirect() {
       this.$router.push({name: 'home'})
@@ -21,7 +19,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+#particles-js {
+  position: absolute;
+  height: calc(100vh - 4px);
+  width: 100vw;
+  z-index: -1;
+  margin-top: -75px;
+}
 .page {
   width: 100%;
 }
@@ -31,8 +36,7 @@ export default {
   flex-direction: row;
   flex-wrap: nowrap;
   background-color: white;
-  position: sticky;
-  top: 0px;
+  position: relative;
   width: 100%;
 }
 .website-title {

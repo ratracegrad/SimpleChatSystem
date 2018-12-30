@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import Home from './views/Home.vue';
+import Group from './views/Group.vue';
 
 Vue.use(Router);
 
@@ -8,7 +10,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: () => import('./views/Home.vue'),
+      component: Home,
     },
     {
       path: '/about',
@@ -21,15 +23,20 @@ export default new Router({
       component: () => import('./views/testBench.vue'),
     },
     {
-      path: '/group',
-      name: 'group',
-      props: true,
-      component: () => import('./views/Group.vue'),
-    },
-    {
       path: '/rooms',
       name: 'rooms',
       component: () => import('./views/Rooms.vue'),
+    },
+    {
+      path: '/create',
+      name: 'create',
+      component: () => import('./views/Create.vue'),
+    },
+    {
+      path: '/group',
+      name: 'group',
+      props: true,
+      component: Group,
     },
   ],
 });

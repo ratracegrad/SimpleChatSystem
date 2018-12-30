@@ -5,14 +5,12 @@
 <script>
 export default {
   name: 'ParticlesJS',
-
   mounted () {
     require('particles.js')
     this.$nextTick(() => {
       this.initParticlesJS()
     })
   },
-
   methods: {
     initParticlesJS () {
       particlesJS('particles-js', {
@@ -127,6 +125,5 @@ export default {
       })
     }
   }
-
 }
 </script>

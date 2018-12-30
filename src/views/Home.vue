@@ -62,24 +62,8 @@ export default {
     },
     create() {
       this.$router.push({name: 'create'})
-    }
+    },
   },
-  computed: { // Functions with cache
-  },
-  props: { // Short for properties // Props are passed through when component is called
-    messageHere: {
-      default: "Error 404" // If no alternative value is given from parent view
-    }
-  },
-  created () { // When page is first created
-
-  },
-  mounted () { // When page is first mounted. Step happens after everything have been loaded
-
-  },
-  destroyed () { // When current page is closed, important if you're preloading a whole site
-
-  }
 }
 </script>
 
@@ -90,8 +74,8 @@ export default {
 }
 
 /* General styles */
-body{
-  margin: 0;
+body {
+  margin: 0px;
 }
 .home {
   display: flex;
@@ -108,7 +92,6 @@ body{
   font-family: PoetsenOne, sans-serif;
   font-size: 28px;
   cursor: default;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -164,10 +147,8 @@ body{
   flex-grow: 1;
   border-radius: 60px;
   border: 4px solid #333;
-  padding: 4px;
+  padding: 4px 6vw;
   margin-left: 8px;
-  padding-left: 6vw;
-  padding-right: 6vw;
 }
 .home .right-homepage .right-buttons .join-button {
   margin-bottom: 40px;
@@ -179,16 +160,16 @@ body{
 /* Right button animations */
 .create-button, .join-button {
   user-select: none;
-  background-size: 200% 100%;
+  background-size: 202% 100%;
   background-image: linear-gradient(to right, transparent 50%, #333 50%);
   transition: background .5s ease-in-out;
 }
 .create-button:hover {
-  background-position: -99.9% -100%;
+  background-position: -98.1% -100%;
   cursor: pointer;
 }
 .join-button:hover {
-  background-position: 100% 100%;
+  background-position: 99.9% 100%;
   cursor: pointer;
 }
 </style>

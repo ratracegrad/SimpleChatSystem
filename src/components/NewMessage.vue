@@ -24,9 +24,7 @@ export default {
           room: this.roomName,
           username: this.username,
           message: this.newMessage,
-          timestamp: Date.now()
-        }).catch(err => {
-          console.log(err)
+          timestamp: Date.now(),
         })
         this.newMessage = null
       }

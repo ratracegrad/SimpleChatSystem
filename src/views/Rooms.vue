@@ -1,45 +1,80 @@
 <template>
   <div class="main-div">
-    <input type="text" placeholder="Search for your room here" name="roomName" autocomplete="off" ref="focus" v-model="roomName" />
-    <div v-for="room in filteredRooms" class="room" v-on:click="join(room)">{{ room }}</div>
+    <particles></particles>
+    <input type="text" placeholder="Search for your room here" name="roomName" autocomplete="off" ref="focus" v-model="search" />
+    <div class="list-container">
+      <div v-for="room in filteredRooms" class="room" v-on:click="join1(room)">{{ room }}</div>
+    </div>
+    <form @submit.prevent="join2" v-if="askPassword" class="popup">
+      <input type="password" placeholder="Password" name="password" autocomplete="off" ref="passwordFocus" v-model="password" />
+      <div v-if="errorText" class="errorText">{{ errorText }}</div>
+      <button value="submit">Join Room</button>
+    </form>
+    <div class="cancel" v-if="askPassword" v-on:click="cancel"></div>
   </div>
 </template>
 
-<script>
+<script scoped>
 import fb from '@/firebase/init'
+import particles from '@/components/particlesJS.vue'
 
 export default {
   name: 'rooms',
+  components: {particles},
   data() {
     return {
-      roomName: "",
+      search: "",
       errorText: null,
       rooms: [],
+      room: null,
+      askPassword: false,
+      password: null,
+      iterateOnce: true,
     }
   },
   methods: {
-    join(string) {
-      this.$router.push({name: 'group', params: {roomName: string}})
-    }
+    join1(string) {
+      this.room = string
+      this.askPassword = true
+      this.$nextTick(() => {
+        this.$refs.passwordFocus.focus()
+      })
+    },
+    join2() {
+      this.iterateOnce = true
+      fb.collection('messages').orderBy('room').onSnapshot(snapshot => {
+        snapshot.docChanges().forEach(change => {
+          if (change.type === "added" && change.doc.data().room === this.room && this.iterateOnce) {
+            if (this.password === change.doc.data().password) {
+              this.$router.push({name: 'group', params: {roomName: this.room}})
+            } else {
+              this.errorText = "Incorrect password"
+              this.$refs.passwordFocus.focus()
+            }
+            this.iterateOnce = false
+          }
+        })
+      })
+    },
+    cancel() {
+      this.askPassword = false
+      this.$refs.focus.focus()
+      this.password = null
+    },
   },
-  computed: { // Functions with cache
+  computed: {
     filteredRooms() {
       return this.rooms.filter(room => {
-        return room.toLowerCase().includes(this.roomName.toLowerCase())
+        return room.toLowerCase().includes(this.search.toLowerCase())
       })
     }
   },
-  props: { // Short for properties // Props are passed through when component is called
-    messageHere:{
-      default: "Error 404" // If no alternative value is given from parent view
-    }
-  },
   created () {
-    let ref = fb.collection('messages').orderBy('timestamp')
+    let ref = fb.collection('messages').orderBy('room')
     ref.onSnapshot(snapshot => {
       snapshot.docChanges().forEach(change => {
         if (change.type === "added" && !this.rooms.includes(change.doc.data().room)){
-          this.rooms.unshift(change.doc.data().room)
+          this.rooms.push(change.doc.data().room)
         }
       })
     })
@@ -81,5 +116,14 @@ input {
 .room:hover {
   background-color: #1f9298;
   cursor: pointer;
+}
+form input {
+  padding: 0px;
+  border: none;
+  border-bottom: 5px solid #b89c3f;
+  width: 400px;
+}
+.popup {
+  top: 0px;
 }
 </style>

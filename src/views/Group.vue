@@ -1,11 +1,11 @@
 <template>
-  <div id='particles-js'>
+  <div>
     <form @submit.prevent="login" v-if="!enterName" class="popup">
       <input type="text" placeholder="Username" name="username" autocomplete="off" ref="focus" v-model="username" />
-      <div v-if="errorText" id="errorText">{{ errorText }}</div>
+      <div v-if="errorText" class="errorText">{{ errorText }}</div>
       <button value="submit">Enter Chat</button>
     </form>
-    <div id="cancel" v-if="!enterName"></div>
+    <div class="cancel" v-if="!enterName"></div>
     <div id="room-name">Room: {{ roomName }}</div>
     <div id="io-box">
       <div id="output">
@@ -17,19 +17,21 @@
       <hr>
         <NewMessage :username="username" :roomName="roomName"></NewMessage>
     </div>
+    <particles></particles>
   </div>
 </template>
 
 <script>
 import NewMessage from '@/components/NewMessage'
 import fb from '@/firebase/init'
+import particles from '@/components/particlesJS.vue'
 
 export default {
   name: 'group',
-  props: ['roomName'],
-  components: { NewMessage },
+  props: ['roomName', 'password'],
+  components: { NewMessage, particles },
   data() {
-    return{
+    return {
       username: null,
       errorText: null,
       enterName: false,
@@ -37,132 +39,26 @@ export default {
     }
   },
   methods: {
-    initParticlesJS() {
-      particlesJS('particles-js', {
-        'particles': {
-          'number': {
-            'value': 100,
-            'density': {
-              'enable': true,
-              'value_area': 10000
-            }
-          },
-          'color': {
-            'value': '#b89c3f'
-          },
-          'shape': {
-            'type': 'circle',
-            'stroke': {
-              'width': 0,
-              'color': '#000000'
-            },
-            'polygon': {
-              'nb_sides': 5
-            },
-            'image': {
-              'src': 'img/github.svg',
-              'width': 100,
-              'height': 100
-            }
-          },
-          'opacity': {
-            'value': 0.5,
-            'random': true,
-            'anim': {
-              'enable': false,
-              'speed': 1,
-              'opacity_min': 0.1,
-              'sync': false
-            }
-          },
-          'size': {
-            'value': 10,
-            'random': true,
-            'anim': {
-              'enable': false,
-              'speed': 40,
-              'size_min': 0.1,
-              'sync': false
-            }
-          },
-          'line_linked': {
-            'enable': false,
-            'distance': 500,
-            'color': '#333',
-            'opacity': 0.4,
-            'width': 2
-          },
-          'move': {
-            'enable': true,
-            'speed': 2,
-            'direction': 'bottom',
-            'random': false,
-            'straight': false,
-            'out_mode': 'out',
-            'bounce': false,
-            'attract': {
-              'enable': false,
-              'rotateX': 0,
-              'rotateY': 0
-            }
-          }
-        },
-        'interactivity': {
-          'detect_on': 'canvas',
-          'events': {
-            'onhover': {
-              'enable': true,
-              'mode': 'bubble'
-            },
-            'onclick': {
-              'enable': false,
-              'mode': 'repulse'
-            },
-            'resize': true
-          },
-          'modes': {
-            'grab': {
-              'distance': 400,
-              'line_linked': {
-                'opacity': 0.5
-              }
-            },
-            'bubble': {
-              'distance': 200,
-              'size': 12,
-              'duration': 0.3,
-              'opacity': 1,
-              'speed': 3
-            },
-            'repulse': {
-              'distance': 200,
-              'duration': 0.4
-            },
-            'push': {
-              'particles_nb': 4
-            },
-            'remove': {
-              'particles_nb': 2
-            }
-          }
-        },
-        'retina_detect': true
-      })
-    },
     login() {
       if (this.username) {
         this.enterName = true
+        if (this.password) {
+          fb.collection('messages').add({
+            room: this.roomName,
+            username: "System",
+            message: this.username + " created the room",
+            timestamp: Date.now(),
+            password: this.password,
+          })
+        }
       } else {
         this.errorText = "Please enter a username first!"
       }
       this.$refs.focus.focus()
     },
   },
-  computed: {
-  },
   created() {
-    let ref = fb.collection('messages').orderBy('timestamp')
-    ref.onSnapshot(snapshot => {
+    fb.collection('messages').orderBy('timestamp').onSnapshot(snapshot => {
       snapshot.docChanges().forEach(change => {
         if (change.type === "added" && change.doc.data().room === this.roomName){
           this.messages.push({
@@ -180,10 +76,6 @@ export default {
     }
   },
   mounted() {
-    require('particles.js')
-    this.$nextTick(() => {
-      this.initParticlesJS()
-    })
     this.$refs.focus.focus()
   },
   updated() {
@@ -268,7 +160,8 @@ body {
   margin-left: calc(50vw - 200px);
   margin-top: calc(50vh - 75px - 23.5px);
 }
-#cancel {
+.cancel {
+  top: 0px;
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -306,10 +199,9 @@ form button:hover {
   background-color: #886c0f;
   color: #b6bcc0;
 }
-#errorText {
+.errorText {
   position: absolute;
   margin-top: 5px;
-  margin-left: 80px;
   color: #b83f75;
   font-family: sans-serif;
   font-size: 18px;

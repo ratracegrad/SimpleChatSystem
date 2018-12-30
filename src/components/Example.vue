@@ -6,34 +6,29 @@
 <script>
 export default {
   name: 'Example',
-  data() { // Anything in the document
+  data() {
     return {
     }
   },
-  methods: { // Normal function
+  methods: {
   },
-  computed: { // Functions with cache
+  computed: {
   },
-  props: { // Short for properties // Props are passed through when component is called
+  props: {
     messageHere: {
-      default: "Error 404" // If no alternative value is given from parent view
+      default: "Error 404"
     }
   },
-  created () { // When page is first created
-
+  created () {
   },
-  mounted () { // When page is first mounted. Step happens after everything have been loaded
-
+  mounted () {
   },
-  destroyed () { // When current page is closed, important if you're preloading a whole site
-
-  }
+  destroyed () {
+  },
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-/* General styles */
+<style scoped>
 .main-div {
   margin: 0;
   padding: 0;
