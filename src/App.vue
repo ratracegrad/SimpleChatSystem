@@ -24,10 +24,10 @@ export default {
 <style>
 #particles-js {
   position: absolute;
-  height: calc(100vh - 4px);
+  height: 100vh;
   width: 100vw;
   z-index: -1;
-  margin-top: -75px;
+  margin-top: -79px;
 }
 .page {
   width: 100%;

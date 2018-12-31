@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import fb from '@/firebase/init'
 import particles from '@/components/particlesJS.vue'
 
 export default {
@@ -29,12 +28,17 @@ export default {
       confirmPassword: null,
       confirmAlert: null,
       rooms: [],
+      possible: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+      randomString: "",
     }
   },
   methods: {
     enter() {
       if (this.roomName && this.password && this.confirmPassword && !this.errorText && !this.passwordAlert && !this.confirmAlert) {
-        this.$router.push({name: 'room', params: {roomName: this.roomName, password: this.password, created: true}})
+        for (var i = 0; i < 8; i++) {
+          this.randomString += this.possible.charAt(Math.floor(Math.random() * this.possible.length))
+        }
+        this.$router.push({name: 'room', params: {roomName: this.roomName, randomString: this.randomString, password: this.password, created: true}})
       }
     }
   },

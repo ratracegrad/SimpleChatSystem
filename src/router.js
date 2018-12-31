@@ -33,7 +33,7 @@ export default new Router({
       component: () => import('./views/Create.vue'),
     },
     {
-      path: '/room/:password',
+      path: '/room/:randomString/:password',
       name: 'room',
       props: true,
       component: Room,

@@ -7,14 +7,16 @@
     </form>
     <div class="cancel" v-if="!enterName"></div>
     <div id="room-name">Room: {{ roomName }}</div>
+    <div id="room-link" v-on:click="copy">Invitation Link</div>
+    <div v-if="copied" id="copied-popup">Link Copied</div>
     <div id="io-box">
       <div id="output">
         <div v-for="message in messages">
-          <div class="message">{{ message.username }}: {{ message.message }}</div>
+          <div class="message">[{{ message.username }}]: {{ message.message }}</div>
         </div>
       </div>
       <hr>
-        <NewMessage :username="username" :password="password"></NewMessage>
+      <NewMessage :username="username" :randomString="randomString"></NewMessage>
     </div>
     <particles></particles>
   </div>
@@ -27,7 +29,7 @@ import particles from '@/components/particlesJS.vue'
 
 export default {
   name: 'room',
-  props: ['roomName', 'password', 'created'],
+  props: ['roomName', 'randomString', 'password', 'created'],
   components: { NewMessage, particles },
   data() {
     return {
@@ -35,6 +37,7 @@ export default {
       errorText: null,
       enterName: false,
       messages: [],
+      copied: false,
     }
   },
   methods: {
@@ -42,11 +45,12 @@ export default {
       if (this.username) {
         this.enterName = true
         if (this.created) {
-          fb.collection(this.password).add({
+          fb.collection(this.randomString).add({
             username: "System",
             message: this.username + " created the room",
             timestamp: Date.now(),
             room: this.roomName,
+            password: this.password,
           })
         }
       } else {
@@ -54,10 +58,22 @@ export default {
       }
       this.$refs.focus.focus()
     },
+    copy() {
+      var link = document.createElement("input")
+      link.value = window.location.href
+      document.getElementById("room-link").appendChild(link)
+      link.select()
+      document.execCommand("copy")
+      document.getElementById("room-link").removeChild(link)
+      this.copied = true
+      setTimeout(function() {
+        this.copied = false
+      }.bind(this), 600)
+    }
   },
   created() {
-    if (this.password) {
-      fb.collection(this.password).orderBy('timestamp').onSnapshot(snapshot => {
+    if (this.password && this.randomString) {
+      fb.collection(this.randomString).orderBy('timestamp').onSnapshot(snapshot => {
         snapshot.docChanges().forEach(change => {
           if (change.type === "added"){
             this.messages.push({
@@ -67,6 +83,11 @@ export default {
             })
             if (change.doc.data().room) {
               this.roomName = change.doc.data().room
+            }
+            if (change.doc.data().password) {
+              if (this.password !== change.doc.data().password) {
+                this.$router.push({name: 'error'})
+              }
             }
           }
         })
@@ -113,7 +134,7 @@ body {
   height: 60vh;
   width: 80vw;
   position: absolute;
-  top: calc(52.5% - 30vh);
+  top: calc(55% - 30vh);
   left: calc(50% - 40vw);
   color: #e6ecf0;
   font-family: YT_font, sans-serif;
@@ -131,6 +152,27 @@ body {
   font-size: 40px;
   font-family: PoetsenOne;
   color: #76b83f;
+}
+#room-link {
+  position: absolute;
+  top: calc(50% - 30vh);
+  left: calc(50% - 40vw);
+  font-size: 20px;
+  font-family: PoetsenOne;
+  color: #3fb2b8;
+  cursor: pointer;
+}
+#room-link:hover {
+  color: #0f8288;
+}
+#copied-popup {
+  position: absolute;
+  left: calc(50% - 320.5px);
+  top: calc(50% - 72px);
+  font-size: 120px;
+  font-family: PoetsenOne;
+  color: #3fb2b8;
+  z-index: 1;
 }
 
 /* Output box styles */
