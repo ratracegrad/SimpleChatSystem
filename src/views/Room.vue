@@ -9,13 +9,12 @@
     <div id="room-name">Room: {{ roomName }}</div>
     <div id="io-box">
       <div id="output">
-        <div v-if="messages.length === 0" class="message">This chat is empty. YEET!</div>
         <div v-for="message in messages">
           <div class="message">{{ message.username }}: {{ message.message }}</div>
         </div>
       </div>
       <hr>
-        <NewMessage :username="username" :roomName="roomName"></NewMessage>
+        <NewMessage :username="username" :password="password"></NewMessage>
     </div>
     <particles></particles>
   </div>
@@ -27,8 +26,8 @@ import fb from '@/firebase/init'
 import particles from '@/components/particlesJS.vue'
 
 export default {
-  name: 'group',
-  props: ['roomName', 'password'],
+  name: 'room',
+  props: ['roomName', 'password', 'created'],
   components: { NewMessage, particles },
   data() {
     return {
@@ -42,13 +41,12 @@ export default {
     login() {
       if (this.username) {
         this.enterName = true
-        if (this.password) {
-          fb.collection('messages').add({
-            room: this.roomName,
+        if (this.created) {
+          fb.collection(this.password).add({
             username: "System",
             message: this.username + " created the room",
             timestamp: Date.now(),
-            password: this.password,
+            room: this.roomName,
           })
         }
       } else {
@@ -58,18 +56,28 @@ export default {
     },
   },
   created() {
-    fb.collection('messages').orderBy('timestamp').onSnapshot(snapshot => {
-      snapshot.docChanges().forEach(change => {
-        if (change.type === "added" && change.doc.data().room === this.roomName){
-          this.messages.push({
-            username: change.doc.data().username,
-            message: change.doc.data().message,
-            timestamp: Date.now()
-          })
+    if (this.password) {
+      fb.collection(this.password).orderBy('timestamp').onSnapshot(snapshot => {
+        snapshot.docChanges().forEach(change => {
+          if (change.type === "added"){
+            this.messages.push({
+              username: change.doc.data().username,
+              message: change.doc.data().message,
+              timestamp: Date.now()
+            })
+            if (change.doc.data().room) {
+              this.roomName = change.doc.data().room
+            }
+          }
+        })
+        if (this.messages.length === 0 && !this.created) {
+          this.$router.push({name: 'error'})
         }
       })
-    })
-    try{
+    } else {
+      this.$router.push({name: 'error'})
+    }
+    try {
       document.getElementById("output").scrollTop = document.getElementById("output").scrollHeight
     } catch(TypeError){
     }
@@ -78,11 +86,11 @@ export default {
     this.$refs.focus.focus()
   },
   updated() {
-    try{
+    try {
       document.getElementById("output").scrollTop = document.getElementById("output").scrollHeight
     } catch(TypeError){
     }
-  }
+  },
 }
 </script>
 

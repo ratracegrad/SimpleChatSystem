@@ -13,13 +13,13 @@
   </div>
 </template>
 
-<script scoped>
+<script>
 import fb from '@/firebase/init'
 import particles from '@/components/particlesJS.vue'
 
 export default {
   name: 'create',
-  components: {particles},
+  components: { particles },
   data() {
     return {
       roomName: null,
@@ -34,43 +34,17 @@ export default {
   methods: {
     enter() {
       if (this.roomName && this.password && this.confirmPassword && !this.errorText && !this.passwordAlert && !this.confirmAlert) {
-        this.$router.push({name: 'group', params: {roomName: this.roomName, password: this.password}})
+        this.$router.push({name: 'room', params: {roomName: this.roomName, password: this.password, created: true}})
       }
     }
-  },
-  created () {
-    let ref = fb.collection('messages').orderBy('timestamp')
-    ref.onSnapshot(snapshot => {
-      snapshot.docChanges().forEach(change => {
-        if (change.type === "added" && !this.rooms.includes(change.doc.data().room)){
-          this.rooms.unshift(change.doc.data().room.toLowerCase())
-        }
-      })
-    })
   },
   mounted () {
     this.$refs.focus.focus()
   },
   updated () {
     if (this.roomName !== null) {
-      if (this.rooms.includes(this.roomName.toLowerCase())) {
-        this.errorText = "This room name is taken for now"
-      } else if (this.roomName[0] === "-") {
-        this.errorText = "You cannot start your room name with a dash"
-      } else if (this.roomName[0] === "_") {
-        this.errorText = "You cannot start your room name with an underscore"
-      } else if (this.roomName.length < 3) {
+      if (this.roomName.length < 3) {
         this.errorText = "Your room name needs at least 3 characters"
-      } else if (!/[a-zA-Z\d\_-]+/g.test(this.roomName)) {
-        this.errorText = "You can only have letters, numbers, dashes, and underscores in you room name"
-      } else if (this.roomName.includes("--")){
-        this.errorText = "You cannot have consecutive dashes in you room name"
-      } else if (this.roomName.includes("__")) {
-        this.errorText = "You cannot have consecutive underscore in you room name"
-      } else if (this.roomName[this.roomName.length - 1] === "-") {
-        this.errorText = "You cannot end your room name with a dash"
-      } else if (this.roomName[this.roomName.length - 1] === "_") {
-        this.errorText = "You cannot end your room name with an underscore"
       } else if (this.roomName.length > 20) {
         this.errorText = "Your room name is too long"
       } else {
