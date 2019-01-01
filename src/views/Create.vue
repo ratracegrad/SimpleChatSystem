@@ -1,7 +1,7 @@
 <template>
   <div class="main-div">
-    <form @submit.prevent="enter">
-      <input type="text" placeholder="Group name" autocomplete="off" ref="focus" v-model="roomName" />
+    <form v-on:submit.prevent="enter">
+      <input type="text" placeholder="Room name" autocomplete="off" ref="focus" v-model="roomName" />
       <div v-if="errorText" class="errorText">{{ errorText }}</div>
       <input type="password" placeholder="Password" autocomplete="off" v-model="password" />
       <div v-if="passwordAlert" class="errorText">{{ passwordAlert }}</div>
@@ -35,6 +35,7 @@ export default {
   },
   methods: {
     enter() {
+      this.roomName = this.roomName.trim().replace(/\s+/, " ")
       if (this.roomName && this.password && this.confirmPassword && !this.errorText && !this.passwordAlert && !this.confirmAlert) {
         for (var i = 0; i < 10; i++) {
           this.randomString += this.possible.charAt(Math.floor(Math.random() * this.possible.length))
@@ -55,11 +56,7 @@ export default {
   },
   updated () {
     if (this.roomName !== null) {
-      if (this.roomName.length < 3) {
-        this.errorText = "Your room name needs at least 3 characters"
-      } else if (this.roomName.length > 20) {
-        this.errorText = "Your room name is too long"
-      } else if (this.rooms.includes(this.roomName.toLowerCase())) {
+      if (this.rooms.includes(this.roomName.toLowerCase())) {
         this.errorText = "This room name is taken for now"
       } else {
         this.errorText = null

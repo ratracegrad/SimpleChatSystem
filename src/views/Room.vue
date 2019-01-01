@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="login" v-if="!enterName" class="popup">
+    <form v-on:submit.prevent="login" v-if="!enterName" class="popup">
       <input type="text" placeholder="Username" name="username" autocomplete="off" ref="focus" v-model="username" />
       <div v-if="errorText" class="errorText">{{ errorText }}</div>
       <button value="submit">Enter Chat</button>
@@ -42,11 +42,12 @@ export default {
   },
   methods: {
     login() {
+      this.username = this.username.trim().replace(/\s+/, " ")
       if (this.username) {
         this.enterName = true
         if (this.created) {
           fb.collection(this.randomString).doc("Created").set({
-            username: "System",
+            username: "   System   ",
             message: this.username + " created the room",
             timestamp: Date.now(),
             room: this.roomName,
@@ -82,7 +83,7 @@ export default {
           this.messages.push({
             username: change.doc.data().username,
             message: change.doc.data().message,
-            timestamp: Date.now()
+            timestamp: Date.now(),
           })
           if (change.doc.data().room) {
             this.roomName = change.doc.data().room

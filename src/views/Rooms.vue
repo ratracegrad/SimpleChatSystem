@@ -3,7 +3,7 @@
     <particles></particles>
     <input type="text" placeholder="Search for your room here" name="roomName" autocomplete="off" ref="focus" v-model="search" />
     <div v-for="match in matches" v-on:click="showPopup(match)" class="room">{{ match }}</div>
-    <form @submit.prevent="join" v-if="askPassword" class="popup">
+    <form v-on:submit.prevent="join" v-if="askPassword" class="popup">
       <input type="password" placeholder="Password" name="password" autocomplete="off" ref="passwordFocus" v-model="password" />
       <div v-if="errorText" class="errorText">{{ errorText }}</div>
       <button value="submit">Join Room</button>

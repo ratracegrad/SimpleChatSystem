@@ -1,6 +1,6 @@
 <template>
   <div class="main-div">
-    <form @submit.prevent="createMessage">
+    <form v-on:submit.prevent="createMessage">
       <input id="input" type="text" name="message" placeholder="Enter Message" autocomplete="off" v-model="newMessage" />
     </form>
   </div>
@@ -19,6 +19,7 @@ export default {
   },
   methods: {
     createMessage() {
+      this.newMessage = this.newMessage.trim()
       if (this.newMessage && this.username){
         fb.collection(this.randomString).add({
           username: this.username,
