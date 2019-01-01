@@ -2,7 +2,7 @@
   <div class="page">
     <div class="nav-bar">
       <div class="about-us" v-on:click="redirect"><span>About Us</span></div>
-      <div class="website-title" v-on:click="redirect"><span>Simple</span></div>
+      <div class="website-title" v-on:click="redirect"><span>Dorpn</span></div>
       <div class="contact-us" v-on:click="redirect"><span>Contact Us</span></div>
     </div>
     <router-view />

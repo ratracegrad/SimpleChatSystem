@@ -11,7 +11,7 @@ import fb from '@/firebase/init'
 
 export default {
   name: 'NewMessage',
-  props: ['username', 'roomName'],
+  props: ['username', 'randomString'],
   data() {
     return{
       newMessage: null,
@@ -20,8 +20,7 @@ export default {
   methods: {
     createMessage() {
       if (this.newMessage && this.username){
-        fb.collection('messages').add({
-          room: this.roomName,
+        fb.collection(this.randomString).add({
           username: this.username,
           message: this.newMessage,
           timestamp: Date.now(),

@@ -2,10 +2,9 @@
   <div class="main-div">
     <particles></particles>
     <input type="text" placeholder="Search for your room here" name="roomName" autocomplete="off" ref="focus" v-model="search" />
-    <div class="list-container">
-      <div v-for="room in filteredRooms" class="room" v-on:click="join1(room)">{{ room }}</div>
-    </div>
-    <form @submit.prevent="join2" v-if="askPassword" class="popup">
+    <div v-if="match" v-on:click="showPopup" class="room">{{ match }}</div>
+    <div v-else-if="search" class="notExist">This room does not exist</div>
+    <form @submit.prevent="join" v-if="askPassword" class="popup">
       <input type="password" placeholder="Password" name="password" autocomplete="off" ref="passwordFocus" v-model="password" />
       <div v-if="errorText" class="errorText">{{ errorText }}</div>
       <button value="submit">Join Room</button>
@@ -15,47 +14,29 @@
 </template>
 
 <script>
-import fb from '@/firebase/init'
 import particles from '@/components/particlesJS.vue'
 
 export default {
   name: 'rooms',
-  components: {particles},
+  components: { particles },
   data() {
     return {
-      search: "",
+      search: null,
       errorText: null,
-      rooms: [],
-      room: null,
       askPassword: false,
       password: null,
-      iterateOnce: true,
     }
   },
   methods: {
-    join1(string) {
-      this.room = string
+    showPopup() {
       this.askPassword = true
       this.$nextTick(() => {
         this.$refs.passwordFocus.focus()
         document.getElementsByClassName("cancel")[0].style.top = document.scrollTop
       })
     },
-    join2() {
-      this.iterateOnce = true
-      fb.collection('messages').orderBy('room').onSnapshot(snapshot => {
-        snapshot.docChanges().forEach(change => {
-          if (change.type === "added" && change.doc.data().room === this.room && this.iterateOnce) {
-            if (this.password === change.doc.data().password) {
-              this.$router.push({name: 'group', params: {roomName: this.room}})
-            } else {
-              this.errorText = "Incorrect password"
-              this.$refs.passwordFocus.focus()
-            }
-            this.iterateOnce = false
-          }
-        })
-      })
+    join() {
+
     },
     cancel() {
       this.askPassword = false
@@ -64,31 +45,18 @@ export default {
     },
   },
   computed: {
-    filteredRooms() {
-      return this.rooms.filter(room => {
-        return room.toLowerCase().includes(this.search.toLowerCase())
-      })
+    match() {
+      try {
+        // if this.search can be found as a collection
+        // return the room name
+      } catch (e) {
+        return null
+      }
     }
-  },
-  created () {
-    let ref = fb.collection('messages').orderBy('room')
-    ref.onSnapshot(snapshot => {
-      snapshot.docChanges().forEach(change => {
-        if (change.type === "added" && !this.rooms.includes(change.doc.data().room)){
-          this.rooms.push(change.doc.data().room)
-        }
-      })
-    })
   },
   mounted () {
     this.$refs.focus.focus()
   },
-  updated () {
-    for (var i = 0; i < document.getElementsByClassName("room").length - 1; i++) {
-      document.getElementsByClassName("room")[i].style.borderBottom = "none"
-    }
-    document.getElementsByClassName("room")[document.getElementsByClassName("room").length - 1].style.borderBottom = "5px solid #b89c3f"
-  }
 }
 </script>
 
@@ -109,14 +77,18 @@ input {
   height: 60px;
   background-color: #3fb2b8;
   font-size: 50px;
-  border-top: 5px solid #b89c3f;
-  border-left: 5px solid #b89c3f;
-  border-right: 5px solid #b89c3f;
+  border: 5px solid #b89c3f;
   padding-left: 10px;
 }
 .room:hover {
   background-color: #1f9298;
   cursor: pointer;
+}
+.notExist {
+  font-size: 100px;
+  color: #e6ecf0;
+  margin-top: 50px;
+  margin-left: 15px;
 }
 form input {
   padding: 0px;
