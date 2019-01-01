@@ -3,7 +3,7 @@
     <div class="nav-bar">
       <div class="about-us" v-on:click="redirect"><span>About Us</span></div>
       <div class="website-title" v-on:click="redirect"><span>Dorpn</span></div>
-      <div class="contact-us" v-on:click="redirect"><span>Contact Us</span></div>
+      <div class="contact-us"><a href="mailto:chingtheprogrammer@icloud.com">Contact Us</a></div>
     </div>
     <router-view />
   </div>
@@ -43,8 +43,10 @@ export default {
 .nav-bar > div {
   flex-grow: 2;
 }
-.nav-bar > div > span {
+.nav-bar > div > span, a {
+  text-decoration: none;
   cursor: pointer;
+  color: #000;
 }
 .nav-bar .about-us {
   align-self: center;
@@ -63,7 +65,6 @@ export default {
   font-size: 50px;
   text-align: center;
   margin: 0;
-  color: #000;
   padding-top: 5px;
   padding-bottom: 10px;
 }
