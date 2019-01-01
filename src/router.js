@@ -18,6 +18,11 @@ export default new Router({
       component: () => import('./views/About.vue'),
     },
     {
+      path: '/guide',
+      name: 'guide',
+      component: () => import('./views/Guide.vue'),
+    },
+    {
       path: '/testBench',
       name: 'Site test bench',
       component: () => import('./views/testBench.vue'),

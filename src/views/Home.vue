@@ -6,6 +6,12 @@
           <svg height="28" width="28">
             <circle cx="14" cy="14" r="14" fill="#b89c3f" />
           </svg>
+          <span>No Registration Needed</span>
+        </div>
+        <div>
+          <svg height="28" width="28">
+            <circle cx="14" cy="14" r="14" fill="#b89c3f" />
+          </svg>
           <span>Find My Group</span>
         </div>
         <div>

@@ -30,7 +30,7 @@ import particles from '@/components/particlesJS.vue'
 export default {
   name: 'room',
   props: ['roomName', 'randomString', 'password', 'created'],
-  components: { NewMessage, particles },
+  components: { particles, NewMessage },
   data() {
     return {
       username: null,
@@ -59,7 +59,7 @@ export default {
       this.$refs.focus.focus()
     },
     copy() {
-      var link = document.createElement("input")
+      const link = document.createElement("input")
       link.value = window.location.href
       document.getElementById("room-link").appendChild(link)
       link.select()
