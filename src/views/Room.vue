@@ -43,11 +43,12 @@ export default {
   methods: {
     login() {
       this.username = this.username.trim().replace(/\s+/, " ")
+      this.roomName = this.roomName.trim().replace(/\s+/, " ")
       if (this.username) {
         this.enterName = true
         if (this.created) {
           fb.collection(this.randomString).doc("Created").set({
-            username: "   System   ",
+            username: " System ",
             message: this.username + " created the room",
             timestamp: Date.now(),
             room: this.roomName,

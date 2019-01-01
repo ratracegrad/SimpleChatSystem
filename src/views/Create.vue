@@ -35,8 +35,7 @@ export default {
   },
   methods: {
     enter() {
-      this.roomName = this.roomName.trim().replace(/\s+/, " ")
-      if (this.roomName && this.password && this.confirmPassword && !this.errorText && !this.passwordAlert && !this.confirmAlert) {
+      if (this.roomName.trim().replace(/\s+/, " ") && this.password && this.confirmPassword && !this.errorText && !this.passwordAlert && !this.confirmAlert) {
         for (var i = 0; i < 10; i++) {
           this.randomString += this.possible.charAt(Math.floor(Math.random() * this.possible.length))
         }
@@ -56,7 +55,7 @@ export default {
   },
   updated () {
     if (this.roomName !== null) {
-      if (this.rooms.includes(this.roomName.toLowerCase())) {
+      if (this.rooms.includes(this.roomName.trim().replace(/\s+/, " ").toLowerCase())) {
         this.errorText = "This room name is taken for now"
       } else {
         this.errorText = null
