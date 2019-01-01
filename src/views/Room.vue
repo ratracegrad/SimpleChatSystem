@@ -45,12 +45,16 @@ export default {
       if (this.username) {
         this.enterName = true
         if (this.created) {
-          fb.collection(this.randomString).add({
+          fb.collection(this.randomString).doc("Created").set({
             username: "System",
             message: this.username + " created the room",
             timestamp: Date.now(),
             room: this.roomName,
             password: this.password,
+          })
+          fb.collection("Rooms").doc(this.roomName).set({
+            password: this.password,
+            randomString: this.randomString,
           })
         }
       } else {
@@ -75,19 +79,17 @@ export default {
     if (this.password && this.randomString) {
       fb.collection(this.randomString).orderBy('timestamp').onSnapshot(snapshot => {
         snapshot.docChanges().forEach(change => {
-          if (change.type === "added"){
-            this.messages.push({
-              username: change.doc.data().username,
-              message: change.doc.data().message,
-              timestamp: Date.now()
-            })
-            if (change.doc.data().room) {
-              this.roomName = change.doc.data().room
-            }
-            if (change.doc.data().password) {
-              if (this.password !== change.doc.data().password) {
-                this.$router.push({name: 'error'})
-              }
+          this.messages.push({
+            username: change.doc.data().username,
+            message: change.doc.data().message,
+            timestamp: Date.now()
+          })
+          if (change.doc.data().room) {
+            this.roomName = change.doc.data().room
+          }
+          if (change.doc.data().password) {
+            if (this.password !== change.doc.data().password) {
+              this.$router.push({name: 'error'})
             }
           }
         })

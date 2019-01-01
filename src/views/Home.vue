@@ -127,6 +127,7 @@ body {
   justify-content: center;
   align-items: center;
   align-content: center;
+  cursor: default;
 }
 .home .right-homepage .right-title {
   font-family: PoetsenOne, sans-serif;

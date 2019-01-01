@@ -2,8 +2,7 @@
   <div class="main-div">
     <particles></particles>
     <input type="text" placeholder="Search for your room here" name="roomName" autocomplete="off" ref="focus" v-model="search" />
-    <div v-if="match" v-on:click="showPopup" class="room">{{ match }}</div>
-    <div v-else-if="search" class="notExist">This room does not exist</div>
+    <div v-for="match in matches" v-on:click="showPopup(match)" class="room">{{ match }}</div>
     <form @submit.prevent="join" v-if="askPassword" class="popup">
       <input type="password" placeholder="Password" name="password" autocomplete="off" ref="passwordFocus" v-model="password" />
       <div v-if="errorText" class="errorText">{{ errorText }}</div>
@@ -14,6 +13,7 @@
 </template>
 
 <script>
+import fb from '@/firebase/init'
 import particles from '@/components/particlesJS.vue'
 
 export default {
@@ -21,14 +21,17 @@ export default {
   components: { particles },
   data() {
     return {
-      search: null,
+      search: "",
       errorText: null,
       askPassword: false,
       password: null,
+      room: null,
+      rooms: [],
     }
   },
   methods: {
-    showPopup() {
+    showPopup(room) {
+      this.room = room
       this.askPassword = true
       this.$nextTick(() => {
         this.$refs.passwordFocus.focus()
@@ -36,7 +39,13 @@ export default {
       })
     },
     join() {
-
+      fb.collection("Rooms").onSnapshot(snapshot => {
+        if (this.password === snapshot.docChanges()[this.rooms.indexOf(this.room)].doc.data().password) {
+          this.$router.push({name: 'room', params: {randomString: snapshot.docChanges()[this.rooms.indexOf(this.room)].doc.data().randomString, password: this.password}})
+        } else {
+          this.errorText = "Incorrect password"
+        }
+      })
     },
     cancel() {
       this.askPassword = false
@@ -45,14 +54,18 @@ export default {
     },
   },
   computed: {
-    match() {
-      try {
-        // if this.search can be found as a collection
-        // return the room name
-      } catch (e) {
-        return null
-      }
+    matches() {
+      return this.rooms.filter(room => {
+        return room.toLowerCase().includes(this.search.toLowerCase())
+      })
     }
+  },
+  created () {
+    fb.collection("Rooms").onSnapshot(snapshot => {
+      snapshot.docChanges().forEach(change => {
+        this.rooms.push(change.doc.id)
+      })
+    })
   },
   mounted () {
     this.$refs.focus.focus()

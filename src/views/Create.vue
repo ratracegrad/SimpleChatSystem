@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import fb from '@/firebase/init'
 import particles from '@/components/particlesJS.vue'
 
 export default {
@@ -35,12 +36,19 @@ export default {
   methods: {
     enter() {
       if (this.roomName && this.password && this.confirmPassword && !this.errorText && !this.passwordAlert && !this.confirmAlert) {
-        for (var i = 0; i < 8; i++) {
+        for (var i = 0; i < 10; i++) {
           this.randomString += this.possible.charAt(Math.floor(Math.random() * this.possible.length))
         }
         this.$router.push({name: 'room', params: {roomName: this.roomName, randomString: this.randomString, password: this.password, created: true}})
       }
     }
+  },
+  created () {
+    fb.collection("Rooms").onSnapshot(snapshot => {
+      snapshot.docChanges().forEach(change => {
+        this.rooms.push(change.doc.id.toLowerCase())
+      })
+    })
   },
   mounted () {
     this.$refs.focus.focus()
@@ -51,6 +59,8 @@ export default {
         this.errorText = "Your room name needs at least 3 characters"
       } else if (this.roomName.length > 20) {
         this.errorText = "Your room name is too long"
+      } else if (this.rooms.includes(this.roomName.toLowerCase())) {
+        this.errorText = "This room name is taken for now"
       } else {
         this.errorText = null
       }
