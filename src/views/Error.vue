@@ -1,7 +1,7 @@
 <template>
   <div class="main-div">
-    This room does not exist!
     <Particles></Particles>
+    This room does not exist!
   </div>
 </template>
 

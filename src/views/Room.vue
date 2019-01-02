@@ -31,7 +31,7 @@
 
 <script>
 import NewMessage from '@/components/NewMessage.vue';
-import fb from '@/firebase/init.js';
+import fb from '@/firebase/init';
 import Particles from '@/components/ParticlesJS.vue';
 
 export default {
@@ -77,6 +77,9 @@ export default {
     document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
   },
   mounted() {
+    if (localStorage.username) {
+      this.username = localStorage.username;
+    }
     this.$refs.nameFocus.focus();
   },
   updated() {
@@ -88,6 +91,7 @@ export default {
       this.roomName = this.roomName.trim().replace(/\s+/, ' ');
       if (this.username) {
         this.enterName = true;
+        localStorage.username = this.username;
         if (this.created) {
           fb.collection(this.randomString).doc('Created').set({
             username: ' System ',

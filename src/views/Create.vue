@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import fb from '@/firebase/init.js';
+import fb from '@/firebase/init';
 import Particles from '@/components/ParticlesJS.vue';
 
 export default {
