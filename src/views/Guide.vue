@@ -4,7 +4,7 @@
     <div>
       Welcome to Dorpn. Our goal of the site is to make communication simple.
       Unlike the other chatting applications nowadays, you do not need to
-      register for an account nor keep to track of the friends you have on this
+      register for an account nor to keep track of the friends you have on this
       site. This site is espcially designed for situations when you need to work
       with new people for a small project, but are not close enough to add each
       other on whatever chatting application you use.

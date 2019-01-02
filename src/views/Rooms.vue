@@ -2,13 +2,13 @@
   <div class="main-div">
     <particles></particles>
     <input type="text" placeholder="Search for your room here" name="roomName" autocomplete="off" ref="focus" v-model="search" />
-    <div v-for="match in matches" v-on:click="showPopup(match)" class="room">{{ match }}</div>
-    <form v-on:submit.prevent="join" v-if="askPassword" class="popup">
+    <div v-for="match in matches" @click="showPopup(match)" class="room">{{ match }}</div>
+    <form @submit.prevent="join" v-if="askPassword" class="popup">
       <input type="password" placeholder="Password" name="password" autocomplete="off" ref="passwordFocus" v-model="password" />
       <div v-if="errorText" class="errorText">{{ errorText }}</div>
       <button value="submit">Join Room</button>
     </form>
-    <div class="cancel" v-if="askPassword" v-on:click="cancel"></div>
+    <div class="cancel" v-if="askPassword" @click="cancel"></div>
   </div>
 </template>
 
@@ -49,8 +49,9 @@ export default {
     },
     cancel() {
       this.askPassword = false
-      this.$refs.focus.focus()
       this.password = null
+      this.errorText = null
+      this.$refs.focus.focus()
     },
   },
   computed: {

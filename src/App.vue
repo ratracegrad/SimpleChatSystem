@@ -1,8 +1,8 @@
 <template>
   <div class="page">
     <div class="nav-bar">
-      <div class="about-us" v-on:click="redirect"><span>About Us</span></div>
-      <div class="website-title" v-on:click="redirect"><span>Dorpn</span></div>
+      <div class="about-us" @click="redirect"><span>About Us</span></div>
+      <div class="website-title" @click="redirect"><span>Dorpn</span></div>
       <div class="contact-us"><a href="mailto:chingtheprogrammer@icloud.com">Contact Us</a></div>
     </div>
     <router-view />

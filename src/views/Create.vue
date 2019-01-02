@@ -1,6 +1,6 @@
 <template>
   <div class="main-div">
-    <form v-on:submit.prevent="enter">
+    <form @submit.prevent="enter">
       <input type="text" placeholder="Room name" autocomplete="off" ref="focus" v-model="roomName" />
       <div v-if="errorText" class="errorText">{{ errorText }}</div>
       <input type="password" placeholder="Password" autocomplete="off" v-model="password" />

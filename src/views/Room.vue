@@ -1,13 +1,20 @@
 <template>
   <div>
-    <form v-on:submit.prevent="login" v-if="!enterName" class="popup">
-      <input type="text" placeholder="Username" name="username" autocomplete="off" ref="focus" v-model="username" />
+    <form @submit.prevent="login" v-if="!enterName" class="popup">
+      <input type="text" placeholder="Username" name="username" autocomplete="off" ref="nameFocus" v-model="username" />
       <div v-if="errorText" class="errorText">{{ errorText }}</div>
       <button value="submit">Enter Chat</button>
     </form>
-    <div class="cancel" v-if="!enterName"></div>
+    <form @submit.prevent="deleteRoom" v-if="deletePrompt" class="popup delete">
+      <div class="alertText">Your messages will be deleted and this action cannot be undone. Enter the password of this room to continue</div>
+      <input type="password" placeholder="Password" name="password" autocomplete="off" ref="deleteFocus" v-model="enteredPassword" />
+      <div v-if="errorText" class="errorText">{{ errorText }}</div>
+      <button value="submit">Delete Room</button>
+    </form>
+    <div class="cancel" v-if="!enterName || deletePrompt" @click="cancel"></div>
     <div id="room-name">Room: {{ roomName }}</div>
-    <div id="room-link" v-on:click="copy">Invitation Link</div>
+    <div id="room-link" @click="copy">Invitation Link</div>
+    <div @click="askDelete" class="deleteButton">Delete Room</div>
     <div v-if="copied" id="copied-popup">Link Copied</div>
     <div id="io-box">
       <div id="output">
@@ -38,6 +45,8 @@ export default {
       enterName: false,
       messages: [],
       copied: false,
+      deletePrompt: false,
+      enteredPassword: null,
     }
   },
   methods: {
@@ -61,8 +70,8 @@ export default {
         }
       } else {
         this.errorText = "Please enter a username first!"
+        this.$refs.nameFocus.focus()
       }
-      this.$refs.focus.focus()
     },
     copy() {
       const link = document.createElement("input")
@@ -75,7 +84,38 @@ export default {
       setTimeout(function() {
         this.copied = false
       }.bind(this), 600)
-    }
+    },
+    askDelete() {
+      this.deletePrompt = true
+      this.$nextTick(() => {
+        this.$refs.deleteFocus.focus()
+      })
+    },
+    deleteRoom() {
+      if (this.enteredPassword === this.password) {
+        fb.collection(this.randomString).onSnapshot(snapshot => {
+          snapshot.forEach(doc => {
+            doc.ref.delete()
+          })
+        })
+        fb.collection("Rooms").onSnapshot(snapshot => {
+          snapshot.forEach(doc => {
+            if (doc.id === this.roomName) {
+              doc.ref.delete()
+            }
+          })
+        })
+        this.$router.push({name: 'home'})
+      } else {
+        this.errorText = "Incorrect Password"
+        this.$refs.deleteFocus.focus()
+      }
+    },
+    cancel() {
+      this.deletePrompt = false
+      this.enteredPassword = null
+      this.errorText = null
+    },
   },
   created() {
     if (this.password && this.randomString) {
@@ -108,7 +148,7 @@ export default {
     }
   },
   mounted() {
-    this.$refs.focus.focus()
+    this.$refs.nameFocus.focus()
   },
   updated() {
     try {
@@ -177,6 +217,42 @@ body {
   font-family: PoetsenOne;
   color: #3fb2b8;
   z-index: 1;
+}
+
+/* Deleting room */
+.alertText {
+  position: absolute;
+  margin-top: -100px;
+  font-size: 22px;
+  font-family: sans-serif;
+  color: #b83f75;
+  width: 400px;
+  text-align: center;
+}
+.delete input {
+  border-color: #b83f75;
+  caret-color: #b83f75;
+}
+.delete button {
+  background-color: #b83f75;
+}
+.delete button:hover {
+  background-color: #880f45
+}
+.deleteButton {
+  background-color: #b83f75;
+  color: #e6ecf0;
+  padding: 5px;
+  border-radius: 5px;
+  position: absolute;
+  top: calc(50% - 30vh);
+  left: calc(50% + 40vw - 98px);
+  cursor: pointer;
+  font-family: PoetsenOne;
+}
+.deleteButton:hover {
+  background-color: #981f55;
+  color: #c6ccd8;
 }
 
 /* Output box styles */

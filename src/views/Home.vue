@@ -12,19 +12,19 @@
           <svg height="28" width="28">
             <circle cx="14" cy="14" r="14" fill="#b89c3f" />
           </svg>
-          <span>Find My Group</span>
+          <span @click="join">Find My Group</span>
         </div>
         <div>
           <svg height="28" width="28">
             <circle cx="14" cy="14" r="14" fill="#b89c3f" />
           </svg>
-          <span>Create New Chat Room</span>
+          <span @click="create">Create New Chat Room</span>
         </div>
         <div>
           <svg height="28" width="28">
             <circle cx="14" cy="14" r="14" fill="#b89c3f" />
           </svg>
-          <span>Quickstart Guide</span>
+          <span @click="guide">Quickstart Guide</span>
         </div>
         <div>
           <svg height="28" width="28">
@@ -39,10 +39,10 @@
         <span>Group communcation made simple. Get productive now</span>
       </div>
       <div class="right-buttons">
-        <div class="join-button" v-on:click="join">
+        <div class="join-button" @click="join">
           Join existing chat room
         </div>
-        <div class="create-button" v-on:click="create">
+        <div class="create-button" @click="create">
           Create new chat room
         </div>
       </div>
@@ -68,6 +68,9 @@ export default {
     },
     create() {
       this.$router.push({name: 'create'})
+    },
+    guide() {
+      this.$router.push({name: 'guide'})
     },
   },
 }
@@ -114,6 +117,7 @@ body {
   color: #e6ecf0;
   text-decoration: none;
   margin-top: 5vh;
+  cursor: pointer;
 }
 
 /* Right page styles */

@@ -1,6 +1,6 @@
 <template>
   <div class="main-div">
-    <form v-on:submit.prevent="createMessage">
+    <form @submit.prevent="createMessage">
       <input id="input" type="text" name="message" placeholder="Enter Message" autocomplete="off" v-model="newMessage" />
     </form>
   </div>
