@@ -103,6 +103,7 @@ export default {
           fb.collection('Rooms').doc(this.roomName).set({
             password: this.password,
             randomString: this.randomString,
+            timestamp: Date(Date.now()),
           });
         }
       } else {

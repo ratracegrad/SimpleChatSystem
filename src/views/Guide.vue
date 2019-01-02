@@ -27,11 +27,8 @@
     </div>
     <h2>Room deletion</h2>
     <div>
-      Once your project is finished or you no longer need to room, you can click on "Delete Room" to
-      delete the room. Don't worry if you are those people who are too lazy to delete your room,
-      because Dorpn will automatically delete a room 2 weeks after its creation. If you need more
-      time with your room, simply change the time shown in the top right corner. You cannot restore
-      a room that has been deleted, but you can always create a new one!
+      You don't need to worry about deleting your room. Dorpn will automatically delete your room 2
+      weeks after its creation!
     </div>
   </div>
 </template>
