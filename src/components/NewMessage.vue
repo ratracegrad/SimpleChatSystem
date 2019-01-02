@@ -7,28 +7,28 @@
 </template>
 
 <script>
-import fb from '@/firebase/init'
+import fb from '@/firebase/init';
 
 export default {
   name: 'NewMessage',
   props: ['username', 'randomString'],
   data() {
-    return{
+    return {
       newMessage: null,
-    }
+    };
   },
   methods: {
     createMessage() {
-      this.newMessage = this.newMessage.trim()
-      if (this.newMessage && this.username){
+      this.newMessage = this.newMessage.trim();
+      if (this.newMessage && this.username) {
         fb.collection(this.randomString).add({
           username: this.username,
           message: this.newMessage,
           timestamp: Date.now(),
-        })
-        this.newMessage = null
+        });
+        this.newMessage = null;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>

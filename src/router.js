@@ -47,6 +47,6 @@ export default new Router({
       path: '/error',
       name: 'error',
       component: () => import('./views/Error.vue'),
-    }
+    },
   ],
 });

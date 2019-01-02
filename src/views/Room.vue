@@ -30,9 +30,9 @@
 </template>
 
 <script>
-import NewMessage from '@/components/NewMessage'
-import fb from '@/firebase/init'
-import particles from '@/components/particlesJS.vue'
+import NewMessage from '@/components/NewMessage';
+import fb from '@/firebase/init';
+import particles from '@/components/particlesJS.vue';
 
 export default {
   name: 'room',
@@ -47,116 +47,110 @@ export default {
       copied: false,
       deletePrompt: false,
       enteredPassword: null,
-    }
+    };
   },
   methods: {
     login() {
-      this.username = this.username.trim().replace(/\s+/, " ")
-      this.roomName = this.roomName.trim().replace(/\s+/, " ")
+      this.username = this.username.trim().replace(/\s+/, ' ');
+      this.roomName = this.roomName.trim().replace(/\s+/, ' ');
       if (this.username) {
-        this.enterName = true
+        this.enterName = true;
         if (this.created) {
-          fb.collection(this.randomString).doc("Created").set({
-            username: " System ",
-            message: this.username + " created the room",
+          fb.collection(this.randomString).doc('Created').set({
+            username: ' System ',
+            message: `${this.username} created the room`,
             timestamp: Date.now(),
             room: this.roomName,
             password: this.password,
-          })
-          fb.collection("Rooms").doc(this.roomName).set({
+          });
+          fb.collection('Rooms').doc(this.roomName).set({
             password: this.password,
             randomString: this.randomString,
-          })
+          });
         }
       } else {
-        this.errorText = "Please enter a username first!"
-        this.$refs.nameFocus.focus()
+        this.errorText = 'Please enter a username first!';
+        this.$refs.nameFocus.focus();
       }
     },
     copy() {
-      const link = document.createElement("input")
-      link.value = window.location.href
-      document.getElementById("room-link").appendChild(link)
-      link.select()
-      document.execCommand("copy")
-      document.getElementById("room-link").removeChild(link)
-      this.copied = true
-      setTimeout(function() {
-        this.copied = false
-      }.bind(this), 600)
+      const link = document.createElement('input');
+      link.value = window.location.href;
+      document.getElementById('room-link').appendChild(link);
+      link.select();
+      document.execCommand('copy');
+      document.getElementById('room-link').removeChild(link);
+      this.copied = true;
+      setTimeout(() => {
+        this.copied = false;
+      }, 600);
     },
     askDelete() {
-      this.deletePrompt = true
+      this.deletePrompt = true;
       this.$nextTick(() => {
-        this.$refs.deleteFocus.focus()
-      })
+        this.$refs.deleteFocus.focus();
+      });
     },
     deleteRoom() {
       if (this.enteredPassword === this.password) {
-        fb.collection(this.randomString).onSnapshot(snapshot => {
-          snapshot.forEach(doc => {
-            doc.ref.delete()
-          })
-        })
-        fb.collection("Rooms").onSnapshot(snapshot => {
-          snapshot.forEach(doc => {
+        fb.collection(this.randomString).onSnapshot((snapshot) => {
+          snapshot.forEach((doc) => {
+            doc.ref.delete();
+          });
+        });
+        fb.collection('Rooms').onSnapshot((snapshot) => {
+          snapshot.forEach((doc) => {
             if (doc.id === this.roomName) {
-              doc.ref.delete()
+              doc.ref.delete();
             }
-          })
-        })
-        this.$router.push({name: 'home'})
+          });
+        });
+        this.$router.push({ name: 'home' });
       } else {
-        this.errorText = "Incorrect Password"
-        this.$refs.deleteFocus.focus()
+        this.errorText = 'Incorrect Password';
+        this.$refs.deleteFocus.focus();
       }
     },
     cancel() {
-      this.deletePrompt = false
-      this.enteredPassword = null
-      this.errorText = null
+      this.deletePrompt = false;
+      this.enteredPassword = null;
+      this.errorText = null;
     },
   },
   created() {
     if (this.password && this.randomString) {
-      fb.collection(this.randomString).orderBy('timestamp').onSnapshot(snapshot => {
-        snapshot.docChanges().forEach(change => {
+      fb.collection(this.randomString).orderBy('timestamp').onSnapshot((snapshot) => {
+        snapshot.docChanges().forEach((change) => {
           this.messages.push({
             username: change.doc.data().username,
             message: change.doc.data().message,
             timestamp: Date.now(),
-          })
+          });
           if (change.doc.data().room) {
-            this.roomName = change.doc.data().room
+            this.roomName = change.doc.data().room;
           }
           if (change.doc.data().password) {
             if (this.password !== change.doc.data().password) {
-              this.$router.push({name: 'error'})
+              this.$router.push({ name: 'error' });
             }
           }
-        })
+        });
         if (this.messages.length === 0 && !this.created) {
-          this.$router.push({name: 'error'})
+          this.$router.push({ name: 'error' });
         }
-      })
+      });
     } else {
-      this.$router.push({name: 'error'})
+      this.$router.push({ name: 'error' });
     }
-    try {
-      document.getElementById("output").scrollTop = document.getElementById("output").scrollHeight
-    } catch(TypeError){
-    }
+    document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
   },
   mounted() {
-    this.$refs.nameFocus.focus()
+    this.$refs.nameFocus.focus();
   },
   updated() {
-    try {
-      document.getElementById("output").scrollTop = document.getElementById("output").scrollHeight
-    } catch(TypeError){
-    }
+    document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
   },
-}
+};
 </script>
 
 <style>

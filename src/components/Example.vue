@@ -8,7 +8,7 @@ export default {
   name: 'Example',
   data() {
     return {
-    }
+    };
   },
   methods: {
   },
@@ -16,16 +16,16 @@ export default {
   },
   props: {
     messageHere: {
-      default: "Error 404"
-    }
+      default: 'Error 404',
+    },
   },
-  created () {
+  created() {
   },
-  mounted () {
+  mounted() {
   },
-  destroyed () {
+  destroyed() {
   },
-}
+};
 </script>
 
 <style scoped>

@@ -13,65 +13,63 @@
 </template>
 
 <script>
-import fb from '@/firebase/init'
-import particles from '@/components/particlesJS.vue'
+import fb from '@/firebase/init';
+import particles from '@/components/particlesJS.vue';
 
 export default {
   name: 'rooms',
   components: { particles },
   data() {
     return {
-      search: "",
+      search: '',
       errorText: null,
       askPassword: false,
       password: null,
       room: null,
       rooms: [],
-    }
+    };
   },
   methods: {
     showPopup(room) {
-      this.room = room
-      this.askPassword = true
+      this.room = room;
+      this.askPassword = true;
       this.$nextTick(() => {
-        this.$refs.passwordFocus.focus()
-        document.getElementsByClassName("cancel")[0].style.top = document.scrollTop
-      })
+        this.$refs.passwordFocus.focus();
+        document.getElementsByClassName('cancel')[0].style.top = document.scrollTop;
+      });
     },
     join() {
-      fb.collection("Rooms").onSnapshot(snapshot => {
+      fb.collection('Rooms').onSnapshot((snapshot) => {
         if (this.password === snapshot.docChanges()[this.rooms.indexOf(this.room)].doc.data().password) {
-          this.$router.push({name: 'room', params: {randomString: snapshot.docChanges()[this.rooms.indexOf(this.room)].doc.data().randomString, password: this.password}})
+          this.$router.push({ name: 'room', params: { randomString: snapshot.docChanges()[this.rooms.indexOf(this.room)].doc.data().randomString, password: this.password } });
         } else {
-          this.errorText = "Incorrect password"
+          this.errorText = 'Incorrect password';
         }
-      })
+      });
     },
     cancel() {
-      this.askPassword = false
-      this.password = null
-      this.errorText = null
-      this.$refs.focus.focus()
+      this.askPassword = false;
+      this.password = null;
+      this.errorText = null;
+      this.$refs.focus.focus();
     },
   },
   computed: {
     matches() {
-      return this.rooms.filter(room => {
-        return room.toLowerCase().includes(this.search.toLowerCase())
-      })
-    }
+      return this.rooms.filter(room => room.toLowerCase().includes(this.search.toLowerCase()));
+    },
   },
-  created () {
-    fb.collection("Rooms").onSnapshot(snapshot => {
-      snapshot.docChanges().forEach(change => {
-        this.rooms.push(change.doc.id)
-      })
-    })
+  created() {
+    fb.collection('Rooms').onSnapshot((snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        this.rooms.push(change.doc.id);
+      });
+    });
   },
-  mounted () {
-    this.$refs.focus.focus()
+  mounted() {
+    this.$refs.focus.focus();
   },
-}
+};
 </script>
 
 <style scoped>

@@ -60,20 +60,20 @@ export default {
       groupName: null,
       enterRoom: false,
       status: null,
-    }
+    };
   },
   methods: {
     join() {
-      this.$router.push({name: 'rooms'})
+      this.$router.push({ name: 'rooms' });
     },
     create() {
-      this.$router.push({name: 'create'})
+      this.$router.push({ name: 'create' });
     },
     guide() {
-      this.$router.push({name: 'guide'})
+      this.$router.push({ name: 'guide' });
     },
   },
-}
+};
 </script>
 
 <style>

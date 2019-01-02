@@ -15,10 +15,10 @@ export default {
   name: 'app',
   methods: {
     redirect() {
-      this.$router.push({name: 'home'})
-    }
-  }
-}
+      this.$router.push({ name: 'home' });
+    },
+  },
+};
 </script>
 
 <style>

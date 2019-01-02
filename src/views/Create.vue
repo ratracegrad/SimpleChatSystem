@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import fb from '@/firebase/init'
-import particles from '@/components/particlesJS.vue'
+import fb from '@/firebase/init';
+import particles from '@/components/particlesJS.vue';
 
 export default {
   name: 'create',
@@ -29,50 +29,55 @@ export default {
       confirmPassword: null,
       confirmAlert: null,
       rooms: [],
-      possible: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
-      randomString: "",
-    }
+      possible: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
+      randomString: '',
+    };
   },
   methods: {
     enter() {
-      if (this.roomName.trim().replace(/\s+/, " ") && this.password && this.confirmPassword && !this.errorText && !this.passwordAlert && !this.confirmAlert) {
-        for (var i = 0; i < 10; i++) {
-          this.randomString += this.possible.charAt(Math.floor(Math.random() * this.possible.length))
+      if (this.roomName.trim().replace(/\s+/, ' ') && this.password && this.confirmPassword && !this.errorText && !this.passwordAlert && !this.confirmAlert) {
+        for (let i = 0; i < 10; i++) {
+          this.randomString += this.possible.charAt(Math.floor(Math.random() * this.possible.length));
         }
-        this.$router.push({name: 'room', params: {roomName: this.roomName, randomString: this.randomString, password: this.password, created: true}})
+        this.$router.push({
+          name: 'room',
+          params: {
+            roomName: this.roomName, randomString: this.randomString, password: this.password, created: true,
+          },
+        });
       }
-    }
+    },
   },
-  created () {
-    fb.collection("Rooms").onSnapshot(snapshot => {
-      snapshot.docChanges().forEach(change => {
-        this.rooms.push(change.doc.id.toLowerCase())
-      })
-    })
+  created() {
+    fb.collection('Rooms').onSnapshot((snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        this.rooms.push(change.doc.id.toLowerCase());
+      });
+    });
   },
-  mounted () {
-    this.$refs.focus.focus()
+  mounted() {
+    this.$refs.focus.focus();
   },
-  updated () {
+  updated() {
     if (this.roomName !== null) {
-      if (this.rooms.includes(this.roomName.trim().replace(/\s+/, " ").toLowerCase())) {
-        this.errorText = "This room name is taken for now"
+      if (this.rooms.includes(this.roomName.trim().replace(/\s+/, ' ').toLowerCase())) {
+        this.errorText = 'This room name is taken for now';
       } else {
-        this.errorText = null
+        this.errorText = null;
       }
     }
     if (this.password !== null && this.password.length < 4) {
-      this.passwordAlert = "Your password must have at least 4 characters"
+      this.passwordAlert = 'Your password must have at least 4 characters';
     } else {
-      this.passwordAlert = null
+      this.passwordAlert = null;
     }
     if (this.confirmPassword !== this.password && this.confirmPassword !== null) {
-      this.confirmAlert = "The password and confirmation password do not match"
+      this.confirmAlert = 'The password and confirmation password do not match';
     } else {
-      this.confirmAlert = null
+      this.confirmAlert = null;
     }
   },
-}
+};
 </script>
 
 <style scoped>

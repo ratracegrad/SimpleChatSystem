@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
-import particlesJS from 'particles.js'
+import particlesJS from 'particles.js';
 
 Vue.config.productionTip = false;
 
