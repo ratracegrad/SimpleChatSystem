@@ -1,25 +1,25 @@
 <template>
   <div class="main-div">
     <form @submit.prevent="enter">
-      <input type="text" placeholder="Room name" autocomplete="off" ref="focus" v-model="roomName" />
+      <input ref="focus" v-model="roomName" type="text" placeholder="Room name" autocomplete="off" />
       <div v-if="errorText" class="errorText">{{ errorText }}</div>
-      <input type="password" placeholder="Password" autocomplete="off" v-model="password" />
+      <input v-model="password" type="password" placeholder="Password" autocomplete="off" />
       <div v-if="passwordAlert" class="errorText">{{ passwordAlert }}</div>
-      <input type="password" placeholder="Confirm your password" autocomplete="off" v-model="confirmPassword" />
+      <input v-model="confirmPassword" type="password" placeholder="Confirm your password" autocomplete="off" />
       <div v-if="confirmAlert" class="errorText">{{ confirmAlert }}</div>
       <button value="submit">Create Room</button>
     </form>
-    <particles></particles>
+    <Particles></Particles>
   </div>
 </template>
 
 <script>
-import fb from '@/firebase/init';
-import particles from '@/components/particlesJS.vue';
+import fb from '@/firebase/init.js';
+import Particles from '@/components/ParticlesJS.vue';
 
 export default {
   name: 'create',
-  components: { particles },
+  components: { Particles },
   data() {
     return {
       roomName: null,
@@ -32,21 +32,6 @@ export default {
       possible: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
       randomString: '',
     };
-  },
-  methods: {
-    enter() {
-      if (this.roomName.trim().replace(/\s+/, ' ') && this.password && this.confirmPassword && !this.errorText && !this.passwordAlert && !this.confirmAlert) {
-        for (let i = 0; i < 10; i++) {
-          this.randomString += this.possible.charAt(Math.floor(Math.random() * this.possible.length));
-        }
-        this.$router.push({
-          name: 'room',
-          params: {
-            roomName: this.roomName, randomString: this.randomString, password: this.password, created: true,
-          },
-        });
-      }
-    },
   },
   created() {
     fb.collection('Rooms').onSnapshot((snapshot) => {
@@ -76,6 +61,21 @@ export default {
     } else {
       this.confirmAlert = null;
     }
+  },
+  methods: {
+    enter() {
+      if (this.roomName.trim().replace(/\s+/, ' ') && this.password && this.confirmPassword && !this.errorText && !this.passwordAlert && !this.confirmAlert) {
+        for (let i = 0; i < 10; i++) {
+          this.randomString += this.possible.charAt(Math.floor(Math.random() * this.possible.length));
+        }
+        this.$router.push({
+          name: 'room',
+          params: {
+            roomName: this.roomName, randomString: this.randomString, password: this.password, created: true,
+          },
+        });
+      }
+    },
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="main-div">
     <form @submit.prevent="createMessage">
-      <input id="input" type="text" name="message" placeholder="Enter Message" autocomplete="off" v-model="newMessage" />
+      <input id="input" v-model="newMessage" type="text" name="message" placeholder="Enter Message" autocomplete="off" />
     </form>
   </div>
 </template>

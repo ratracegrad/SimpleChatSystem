@@ -1,29 +1,29 @@
 <template>
   <div class="test-main-div">
-    <p class='text' style="background-color: #76b83f; color: #e6ecf0;">Frozen Frozen Frozen #76b83f</p>
-    <p class='text' style="background-color: #e6ecf0; color: #76b83f;">Frozen Frozen Frozen #76b83f</p>
-    <p class='text' style="background-color: #333; color: #76b83f;">Frozen Frozen Frozen #76b83f</p>
-    <p class='text' style="background-color: #76b83f; color: #333;">Frozen Frozen Frozen #76b83f</p>
-    <p class='text' style="background-color: #b85f3f; color: #e6ecf0;">Frozen Frozen Frozen #b85f3f</p>
-    <p class='text' style="background-color: #e6ecf0; color: #b85f3f;">Frozen Frozen Frozen #b85f3f</p>
-    <p class='text' style="background-color: #333; color: #b85f3f;">Frozen Frozen Frozen #b85f3f</p>
-    <p class='text' style="background-color: #b85f3f; color: #333;">Frozen Frozen Frozen #b85f3f</p>
-    <p class='text' style="background-color: #813fb8; color: #e6ecf0;">Frozen Frozen Frozen #813fb8</p>
-    <p class='text' style="background-color: #e6ecf0; color: #813fb8;">Frozen Frozen Frozen #813fb8</p>
-    <p class='text' style="background-color: #333; color: #813fb8;">Love Is An Open Door #813fb8</p>
-    <p class='text' style="background-color: #813fb8; color: #333;">Frozen Frozen Frozen #813fb8</p>
-    <p class='text' style="background-color: #b89c3f; color: #e6ecf0;">Frozen Frozen Frozen #b89c3f</p>
-    <p class='text' style="background-color: #e6ecf0; color: #b89c3f;">Frozen Frozen Frozen #b89c3f</p>
-    <p class='text' style="background-color: #333; color: #b89c3f;">Frozen Frozen Frozen #b89c3f</p>
-    <p class='text' style="background-color: #b89c3f; color: #333;">Frozen Frozen Frozen #b89c3f</p>
-    <p class='text' style="background-color: #b83f75; color: #e6ecf0;">Frozen Frozen Frozen #b83f75</p>
-    <p class='text' style="background-color: #e6ecf0; color: #b83f75;">Frozen Frozen Frozen #b83f75</p>
-    <p class='text' style="background-color: #333; color: #b83f75;">Frozen Frozen Frozen #b83f75</p>
-    <p class='text' style="background-color: #b83f75; color: #333;">Frozen Frozen Frozen #b83f75</p>
-    <p class='text' style="background-color: #3fb2b8; color: #e6ecf0;">The Ocean Chose Me #3fb2b8</p>
-    <p class='text' style="background-color: #e6ecf0; color: #3fb2b8;">Frozen Frozen Frozen #3fb2b8</p>
-    <p class='text' style="background-color: #333; color: #3fb2b8;">Frozen Frozen Frozen #3fb2b8</p>
-    <p class='text' style="background-color: #3fb2b8; color: #333;">Frozen Frozen Frozen #3fb2b8</p>
+    <p class="text" style="background-color: #76b83f; color: #e6ecf0;">Frozen Frozen Frozen #76b83f</p>
+    <p class="text" style="background-color: #e6ecf0; color: #76b83f;">Frozen Frozen Frozen #76b83f</p>
+    <p class="text" style="background-color: #333; color: #76b83f;">Frozen Frozen Frozen #76b83f</p>
+    <p class="text" style="background-color: #76b83f; color: #333;">Frozen Frozen Frozen #76b83f</p>
+    <p class="text" style="background-color: #b85f3f; color: #e6ecf0;">Frozen Frozen Frozen #b85f3f</p>
+    <p class="text" style="background-color: #e6ecf0; color: #b85f3f;">Frozen Frozen Frozen #b85f3f</p>
+    <p class="text" style="background-color: #333; color: #b85f3f;">Frozen Frozen Frozen #b85f3f</p>
+    <p class="text" style="background-color: #b85f3f; color: #333;">Frozen Frozen Frozen #b85f3f</p>
+    <p class="text" style="background-color: #813fb8; color: #e6ecf0;">Frozen Frozen Frozen #813fb8</p>
+    <p class="text" style="background-color: #e6ecf0; color: #813fb8;">Frozen Frozen Frozen #813fb8</p>
+    <p class="text" style="background-color: #333; color: #813fb8;">Love Is An Open Door #813fb8</p>
+    <p class="text" style="background-color: #813fb8; color: #333;">Frozen Frozen Frozen #813fb8</p>
+    <p class="text" style="background-color: #b89c3f; color: #e6ecf0;">Frozen Frozen Frozen #b89c3f</p>
+    <p class="text" style="background-color: #e6ecf0; color: #b89c3f;">Frozen Frozen Frozen #b89c3f</p>
+    <p class="text" style="background-color: #333; color: #b89c3f;">Frozen Frozen Frozen #b89c3f</p>
+    <p class="text" style="background-color: #b89c3f; color: #333;">Frozen Frozen Frozen #b89c3f</p>
+    <p class="text" style="background-color: #b83f75; color: #e6ecf0;">Frozen Frozen Frozen #b83f75</p>
+    <p class="text" style="background-color: #e6ecf0; color: #b83f75;">Frozen Frozen Frozen #b83f75</p>
+    <p class="text" style="background-color: #333; color: #b83f75;">Frozen Frozen Frozen #b83f75</p>
+    <p class="text" style="background-color: #b83f75; color: #333;">Frozen Frozen Frozen #b83f75</p>
+    <p class="text" style="background-color: #3fb2b8; color: #e6ecf0;">The Ocean Chose Me #3fb2b8</p>
+    <p class="text" style="background-color: #e6ecf0; color: #3fb2b8;">Frozen Frozen Frozen #3fb2b8</p>
+    <p class="text" style="background-color: #333; color: #3fb2b8;">Frozen Frozen Frozen #3fb2b8</p>
+    <p class="text" style="background-color: #3fb2b8; color: #333;">Frozen Frozen Frozen #3fb2b8</p>
   </div>
 </template>
 

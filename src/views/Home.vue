@@ -47,7 +47,6 @@
         </div>
       </div>
     </div>
-    <div id="cancel" v-if="enterRoom"></div>
   </div>
 </template>
 
@@ -55,13 +54,6 @@
 
 export default {
   name: 'home',
-  data() {
-    return {
-      groupName: null,
-      enterRoom: false,
-      status: null,
-    };
-  },
   methods: {
     join() {
       this.$router.push({ name: 'rooms' });

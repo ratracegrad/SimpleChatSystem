@@ -1,20 +1,20 @@
 <template>
   <div>
-    <form @submit.prevent="login" v-if="!enterName" class="popup">
-      <input type="text" placeholder="Username" name="username" autocomplete="off" ref="nameFocus" v-model="username" />
+    <form v-if="!enterName" class="popup" @submit.prevent="login">
+      <input ref="nameFocus" v-model="username" type="text" placeholder="Username" name="username" autocomplete="off" />
       <div v-if="errorText" class="errorText">{{ errorText }}</div>
       <button value="submit">Enter Chat</button>
     </form>
-    <form @submit.prevent="deleteRoom" v-if="deletePrompt" class="popup delete">
+    <form v-if="deletePrompt" class="popup delete" @submit.prevent="deleteRoom">
       <div class="alertText">Your messages will be deleted and this action cannot be undone. Enter the password of this room to continue</div>
-      <input type="password" placeholder="Password" name="password" autocomplete="off" ref="deleteFocus" v-model="enteredPassword" />
+      <input ref="deleteFocus" v-model="enteredPassword" type="password" placeholder="Password" name="password" autocomplete="off" />
       <div v-if="errorText" class="errorText">{{ errorText }}</div>
       <button value="submit">Delete Room</button>
     </form>
-    <div class="cancel" v-if="!enterName || deletePrompt" @click="cancel"></div>
+    <div v-if="!enterName || deletePrompt" class="cancel" @click="cancel"></div>
     <div id="room-name">Room: {{ roomName }}</div>
     <div id="room-link" @click="copy">Invitation Link</div>
-    <div @click="askDelete" class="deleteButton">Delete Room</div>
+    <div class="deleteButton" @click="askDelete">Delete Room</div>
     <div v-if="copied" id="copied-popup">Link Copied</div>
     <div id="io-box">
       <div id="output">
@@ -25,19 +25,19 @@
       <hr>
       <NewMessage :username="username" :randomString="randomString"></NewMessage>
     </div>
-    <particles></particles>
+    <Particles></Particles>
   </div>
 </template>
 
 <script>
-import NewMessage from '@/components/NewMessage';
-import fb from '@/firebase/init';
-import particles from '@/components/particlesJS.vue';
+import NewMessage from '@/components/NewMessage.vue';
+import fb from '@/firebase/init.js';
+import Particles from '@/components/ParticlesJS.vue';
 
 export default {
   name: 'room',
+  components: { Particles, NewMessage },
   props: ['roomName', 'randomString', 'password', 'created'],
-  components: { particles, NewMessage },
   data() {
     return {
       username: null,
@@ -48,6 +48,39 @@ export default {
       deletePrompt: false,
       enteredPassword: null,
     };
+  },
+  created() {
+    if (this.password && this.randomString) {
+      fb.collection(this.randomString).orderBy('timestamp').onSnapshot((snapshot) => {
+        snapshot.docChanges().forEach((change) => {
+          this.messages.push({
+            username: change.doc.data().username,
+            message: change.doc.data().message,
+            timestamp: Date.now(),
+          });
+          if (change.doc.data().room) {
+            this.roomName = change.doc.data().room;
+          }
+          if (change.doc.data().password) {
+            if (this.password !== change.doc.data().password) {
+              this.$router.push({ name: 'error' });
+            }
+          }
+        });
+        if (this.messages.length === 0 && !this.created) {
+          this.$router.push({ name: 'error' });
+        }
+      });
+    } else {
+      this.$router.push({ name: 'error' });
+    }
+    document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
+  },
+  mounted() {
+    this.$refs.nameFocus.focus();
+  },
+  updated() {
+    document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
   },
   methods: {
     login() {
@@ -116,39 +149,6 @@ export default {
       this.enteredPassword = null;
       this.errorText = null;
     },
-  },
-  created() {
-    if (this.password && this.randomString) {
-      fb.collection(this.randomString).orderBy('timestamp').onSnapshot((snapshot) => {
-        snapshot.docChanges().forEach((change) => {
-          this.messages.push({
-            username: change.doc.data().username,
-            message: change.doc.data().message,
-            timestamp: Date.now(),
-          });
-          if (change.doc.data().room) {
-            this.roomName = change.doc.data().room;
-          }
-          if (change.doc.data().password) {
-            if (this.password !== change.doc.data().password) {
-              this.$router.push({ name: 'error' });
-            }
-          }
-        });
-        if (this.messages.length === 0 && !this.created) {
-          this.$router.push({ name: 'error' });
-        }
-      });
-    } else {
-      this.$router.push({ name: 'error' });
-    }
-    document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
-  },
-  mounted() {
-    this.$refs.nameFocus.focus();
-  },
-  updated() {
-    document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
   },
 };
 </script>

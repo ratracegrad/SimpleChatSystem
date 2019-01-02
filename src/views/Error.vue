@@ -1,12 +1,16 @@
 <template>
   <div class="main-div">
     This room does not exist!
+    <Particles></Particles>
   </div>
 </template>
 
 <script>
+import Particles from '@/components/ParticlesJS.vue';
+
 export default {
   name: 'error',
+  components: { Particles },
 };
 </script>
 

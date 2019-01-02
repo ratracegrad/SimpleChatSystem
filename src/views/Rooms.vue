@@ -1,24 +1,24 @@
 <template>
   <div class="main-div">
-    <particles></particles>
-    <input type="text" placeholder="Search for your room here" name="roomName" autocomplete="off" ref="focus" v-model="search" />
-    <div v-for="match in matches" @click="showPopup(match)" class="room">{{ match }}</div>
-    <form @submit.prevent="join" v-if="askPassword" class="popup">
-      <input type="password" placeholder="Password" name="password" autocomplete="off" ref="passwordFocus" v-model="password" />
+    <Particles></Particles>
+    <input ref="focus" v-model="search" type="text" placeholder="Search for your room here" name="roomName" autocomplete="off" />
+    <div v-for="match in matches" class="room" @click="showPopup(match)">{{ match }}</div>
+    <form v-if="askPassword" class="popup" @submit.prevent="join">
+      <input ref="passwordFocus" v-model="password" type="password" placeholder="Password" name="password" autocomplete="off" />
       <div v-if="errorText" class="errorText">{{ errorText }}</div>
       <button value="submit">Join Room</button>
     </form>
-    <div class="cancel" v-if="askPassword" @click="cancel"></div>
+    <div v-if="askPassword" class="cancel" @click="cancel"></div>
   </div>
 </template>
 
 <script>
-import fb from '@/firebase/init';
-import particles from '@/components/particlesJS.vue';
+import fb from '@/firebase/init.js';
+import Particles from '@/components/ParticlesJS.vue';
 
 export default {
   name: 'rooms',
-  components: { particles },
+  components: { Particles },
   data() {
     return {
       search: '',
@@ -28,6 +28,21 @@ export default {
       room: null,
       rooms: [],
     };
+  },
+  computed: {
+    matches() {
+      return this.rooms.filter(room => room.toLowerCase().includes(this.search.toLowerCase()));
+    },
+  },
+  created() {
+    fb.collection('Rooms').onSnapshot((snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        this.rooms.push(change.doc.id);
+      });
+    });
+  },
+  mounted() {
+    this.$refs.focus.focus();
   },
   methods: {
     showPopup(room) {
@@ -53,21 +68,6 @@ export default {
       this.errorText = null;
       this.$refs.focus.focus();
     },
-  },
-  computed: {
-    matches() {
-      return this.rooms.filter(room => room.toLowerCase().includes(this.search.toLowerCase()));
-    },
-  },
-  created() {
-    fb.collection('Rooms').onSnapshot((snapshot) => {
-      snapshot.docChanges().forEach((change) => {
-        this.rooms.push(change.doc.id);
-      });
-    });
-  },
-  mounted() {
-    this.$refs.focus.focus();
   },
 };
 </script>

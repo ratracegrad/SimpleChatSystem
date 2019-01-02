@@ -1,6 +1,6 @@
 <template>
   <div class="main-div">
-    <particles></particles>
+    <Particles></Particles>
     <div>
       Welcome to Dorpn. Our goal of the site is to make communication simple. Unlike the other
       chatting applications nowadays, you do not need to register for an account nor to keep track
@@ -37,11 +37,11 @@
 </template>
 
 <script>
-import particles from '@/components/particlesJS.vue';
+import Particles from '@/components/ParticlesJS.vue';
 
 export default {
   name: 'guide',
-  components: { particles },
+  components: { Particles },
 };
 </script>
 
