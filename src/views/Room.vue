@@ -14,7 +14,7 @@
     <div v-if="!enterName || deletePrompt" class="cancel" @click="cancel"></div>
     <div id="room-name">Room: {{ roomName }}</div>
     <div id="room-link" @click="copy">Invitation Link</div>
-    <div class="deleteButton" @click="askDelete">Delete Room</div>
+    <!-- <div class="deleteButton" @click="askDelete">Delete Room</div> -->
     <div v-if="copied" id="copied-popup">Link Copied</div>
     <div id="io-box">
       <div id="output">
