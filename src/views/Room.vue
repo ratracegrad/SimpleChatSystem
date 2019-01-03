@@ -59,6 +59,7 @@ export default {
             message: change.doc.data().message,
             timestamp: Date.now(),
           });
+          document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
           if (change.doc.data().room) {
             this.roomName = change.doc.data().room;
           }
@@ -81,7 +82,6 @@ export default {
       this.username = localStorage.username;
     }
     this.$refs.nameFocus.focus();
-    document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
   },
   watch: {
     messages() {

@@ -59,10 +59,10 @@ export default {
     updateQuote() {
       var quoteNum = Math.floor(Math.random() * this.frozenQuotes.length);
       while (this.frozenQuotes[quoteNum] === this.frozenQuote) {
-        var quoteNum = Math.floor(Math.random() * this.frozenQuotes.length);
+        quoteNum = Math.floor(Math.random() * this.frozenQuotes.length);
       }
       this.frozenQuote = this.frozenQuotes[quoteNum];
-    }
+    },
   },
 };
 </script>
