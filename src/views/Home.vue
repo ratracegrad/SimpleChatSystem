@@ -1,37 +1,17 @@
 <template>
   <div class="home">
     <div class="left-homepage">
-      <div>
-        <div>
-          <svg height="28" width="28">
-            <circle cx="14" cy="14" r="14" fill="#b89c3f" />
-          </svg>
-          <span>No Registration Needed</span>
-        </div>
-        <div>
-          <svg height="28" width="28">
-            <circle cx="14" cy="14" r="14" fill="#b89c3f" />
-          </svg>
-          <span @click="join">Find My Group</span>
-        </div>
-        <div>
-          <svg height="28" width="28">
-            <circle cx="14" cy="14" r="14" fill="#b89c3f" />
-          </svg>
-          <span @click="create">Create New Chat Room</span>
-        </div>
-        <div>
-          <svg height="28" width="28">
-            <circle cx="14" cy="14" r="14" fill="#b89c3f" />
-          </svg>
-          <span @click="guide">Quickstart Guide</span>
-        </div>
-        <div>
-          <svg height="28" width="28">
-            <circle cx="14" cy="14" r="14" fill="#b89c3f" />
-          </svg>
-          <span>About Us</span>
-        </div>
+      <div class="left-button">
+        Quickstart Guide
+      </div>
+      <div class="left-button">
+        About
+      </div>
+      <div class="frozen left-button" v-on:click="updateQuote">
+        {{ frozenQuote }}
+      </div>
+      <div class="left-button">
+        Contact
       </div>
     </div>
     <div class="right-homepage">
@@ -39,12 +19,12 @@
         <span>Group communcation made simple. Get productive now</span>
       </div>
       <div class="right-buttons">
-        <div class="join-button" @click="join">
-          Join existing chat room
-        </div>
-        <div class="create-button" @click="create">
-          Create new chat room
-        </div>
+        <router-link to='/rooms' class="join-button">
+          <span class="button-span">Join existing chat room</span>
+        </router-link>
+        <router-link to='/create' class="create-button">
+          <span class="button-span">Create new chat room</span>
+        </router-link>
       </div>
     </div>
   </div>
@@ -54,17 +34,43 @@
 
 export default {
   name: 'home',
-  methods: {
-    join() {
-      this.$router.push({ name: 'rooms' });
-    },
-    create() {
-      this.$router.push({ name: 'create' });
-    },
-    guide() {
-      this.$router.push({ name: 'guide' });
-    },
+  data() {
+    return {
+      frozenQuotes: [
+                       "There it is, the door you love to slam in my face!",
+                       "Love is an open door!",
+                       "This icy force, both foul and fair, has a frozen heart worth mining",
+                       "Beware the frozen heart",
+                       "Conceal don't feel, don't let them know",
+                       "He's got a couple of bugs",
+                       "Some people are worth melting for",
+                       "The past is in the past",
+                       "That perfect girl is gone",
+                       "Raindeers are better than people",
+                       "The heart is not so easily changed, but the head can be persuaded",
+                       "You can't marry a man you just met",
+                       "Somebody's gotta tell him",
+                       "Love is putting someone else’s needs before yours",
+                       "The hot and the cold are both so intense, but them together it just makes sense",
+                       "The sky's awake, so I'm awake",
+                    ],
+      frozenQuote: "The sky's awake, so I'm awake",
+    }
   },
+  methods: {
+    updateQuote() {
+      var quoteNum = Math.floor(Math.random() * this.frozenQuotes.length)
+      this.frozenQuote = this.frozenQuotes[quoteNum]
+    }
+  },
+  computed: {
+   // frozenQuote: function() {
+   //    return frozenQuotes[this.randomNum]
+   //  }
+ },
+ mounted() {
+   this.updateQuote()
+ }
 };
 </script>
 
@@ -82,6 +88,7 @@ body {
   display: flex;
   flex-wrap: nowrap;
   align-items: stretch;
+  overflow: hidden;
 }
 
 /* Left page styles */
@@ -94,9 +101,8 @@ body {
   font-size: 28px;
   cursor: default;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
   flex-basis: 0;
 }
 .home .left-homepage div {
@@ -110,6 +116,29 @@ body {
   text-decoration: none;
   margin-top: 5vh;
   cursor: pointer;
+}
+.home .left-button {
+  margin: 3%;
+  padding: 2%;
+  height: 38%;
+  width: 40%;
+  background-color: #b89c3f;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+.home .frozen {
+  transition-property: background-color, color, text-shadow;
+  transition-duration: 600ms;
+
+}
+.home .frozen:hover {
+  background-color: #3fb2b8;
+  color: #e6ecf0;
+  text-shadow: 0 0 8px #D32B92, 0 0 8px #D32B92, 0 0 8px #D32B92, 0 0 8px #D32B92;
 }
 
 /* Right page styles */
@@ -145,6 +174,10 @@ body {
   font-family: PoetsenOne, sans-serif;
   color: #e6ecf0;
 }
+.home .right-homepage .right-buttons .button-span{
+  color: #e6ecf0;
+  text-shadow: 0 0 10px #333;
+}
 .home .right-homepage .right-buttons > * {
   flex-basis: 0;
   flex-grow: 1;
@@ -156,9 +189,7 @@ body {
 .home .right-homepage .right-buttons .join-button {
   margin-bottom: 40px;
 }
-.join-button a, .create-button a {
-  text-shadow: 0 0 10px #333;
-}
+
 
 /* Right button animations */
 .create-button, .join-button {

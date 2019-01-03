@@ -1,9 +1,9 @@
 <template>
   <div class="page">
     <div class="nav-bar">
-      <div class="about-us"><span @click="redirect">About Us</span></div>
-      <div class="website-title"><span @click="redirect">Dorpn</span></div>
-      <div class="contact-us"><a href="mailto:chingtheprogrammer@icloud.com">Contact Us</a></div>
+      <div class="about-us"><router-link to='about'>About</router-link></div>
+      <div class="website-title"><router-link to='/'>Dorpn</router-link></div>
+      <div class="contact-us"><router-link to='guide'>Guide</router-link></div>
     </div>
     <router-view />
   </div>
@@ -14,9 +14,6 @@
 export default {
   name: 'app',
   methods: {
-    redirect() {
-      this.$router.push({ name: 'home' });
-    },
   },
 };
 </script>

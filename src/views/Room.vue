@@ -12,7 +12,7 @@
       <button value="submit">Delete Room</button>
     </form>
     <div v-if="!enterName || deletePrompt" class="cancel" @click="cancel"></div>
-    <div id="room-name">Room: {{ roomName }}</div>
+    <div id="room-name">{{ roomName }}</div>
     <div id="room-link" @click="copy">Invitation Link</div>
     <!-- <div class="deleteButton" @click="askDelete">Delete Room</div> -->
     <div v-if="copied" id="copied-popup">Link Copied</div>
@@ -22,7 +22,6 @@
           <div class="message">[{{ message.username }}]: {{ message.message }}</div>
         </div>
       </div>
-      <hr>
       <NewMessage :username="username" :randomString="randomString"></NewMessage>
     </div>
     <Particles></Particles>
@@ -121,7 +120,7 @@ export default {
       this.copied = true;
       setTimeout(() => {
         this.copied = false;
-      }, 600);
+      }, 1000);
     },
     askDelete() {
       this.deletePrompt = true;
@@ -173,7 +172,6 @@ body {
   background-color: #333;
 }
 #io-box {
-  border: 4px solid red;
   height: 60vh;
   width: 80vw;
   position: absolute;
@@ -194,7 +192,7 @@ body {
   left: calc(50% - 40vw);
   font-size: 40px;
   font-family: PoetsenOne;
-  color: #76b83f;
+  color: #b89c3f;
 }
 #room-link {
   position: absolute;
@@ -214,7 +212,8 @@ body {
   top: calc(50% - 72px);
   font-size: 120px;
   font-family: PoetsenOne;
-  color: #3fb2b8;
+  color: #b89c3f;
+  text-shadow: 0 0 20px #333, 0 0 20px #333, 0 0 20px #333, 0 0 20px #333;
   z-index: 1;
 }
 
@@ -261,20 +260,26 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-  overflow: auto;
+  overflow: scroll;
 }
-
-/* Messages style */
+#output::-webkit-scrollbar {
+  display: none;
+}
 .message {
   font-size: 24px;
   margin: 8px;
+  letter-spacing: 1px;
 }
 
 /* Input box styles */
 #input {
+  font-family: YT_font, sans-serif;
+  padding-left: 15px;
+  margin-left: 6px;
   outline: none;
-  border: 4px solid green;
   margin: 0 -4px;
+  border-bottom: none;
+  border-top: 4px solid #b89c3f;
 }
 #io-box input {
   font-size: 30px;
