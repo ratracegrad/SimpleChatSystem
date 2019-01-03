@@ -2,7 +2,7 @@
   <div class="main-div">
     <Particles></Particles>
     <input ref="focus" v-model="search" type="text" placeholder="Search for your room here" name="roomName" autocomplete="off" />
-    <div v-for="match in matches" class="room" @click="showPopup(match)">{{ match }}</div>
+    <div v-for="(match, iter) in matches" class="room" @click="showPopup(match)"><div v-bind:class="buttonClass">{{ match }}</div></div>
     <form v-if="askPassword" class="popup" @submit.prevent="join">
       <input ref="passwordFocus" v-model="password" type="password" placeholder="Password" name="password" autocomplete="off" />
       <div v-if="errorText" class="errorText">{{ errorText }}</div>
@@ -27,9 +27,18 @@ export default {
       password: null,
       room: null,
       rooms: [],
+      classIteration: 2,
     };
   },
+  methods: {
+  },
   computed: {
+    buttonClass() {
+      var buttonClass = "button" + this.classIteration
+      if (this.classIteration < 2) this.classIteration += 1
+      else if (this.classIteration === 2) this.classIteration = 0
+      return buttonClass
+    },
     matches() {
       return this.rooms.filter(room => room.toLowerCase().includes(this.search.toLowerCase()));
     },
@@ -73,6 +82,11 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: YT_font;
+  src: url('../assets/Fonts/YT_font.ttf');
+}
+
 input {
   caret-color: #b89c3f;
   font-size: 40px;
@@ -86,11 +100,25 @@ input {
   border: 5px solid #b89c3f;
 }
 .room {
+  color: #e6ecf0;
+  font-family: YT_font;
+  overflow: hidden;
+  width: 95%;
   height: 60px;
-  background-color: #3fb2b8;
+  background-color: #333;
   font-size: 50px;
-  border: 5px solid #b89c3f;
+  border-radius: 60px;
+  margin: 6px 6px;
   padding-left: 10px;
+}
+.button0:hover {
+  background-color: #76b83f;
+}
+.button1:hover {
+  background-color: #813fb8;
+}
+.button2:hover {
+  background-color: #b83f75;
 }
 .room:hover {
   background-color: #1f9298;

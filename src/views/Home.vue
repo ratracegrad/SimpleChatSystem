@@ -52,18 +52,21 @@ export default {
         "The sky's awake, so I'm awake",
         "I know it all ends tomorrow, so it has to be today",
       ],
-      frozenQuote: "Random Frozen Quotes",
+      frozenQuote: "The sky's awake, so I'm awake",
     }
   },
   methods: {
     updateQuote() {
       var quoteNum = Math.floor(Math.random() * this.frozenQuotes.length);
       while (this.frozenQuotes[quoteNum] === this.frozenQuote) {
-        var quoteNum = Math.floor(Math.random() * this.frozenQuotes.length);
+        quoteNum = Math.floor(Math.random() * this.frozenQuotes.length);
       }
       this.frozenQuote = this.frozenQuotes[quoteNum];
     }
   },
+  mounted() {
+    this.updateQuote()
+  }
 };
 </script>
 
@@ -122,6 +125,9 @@ body {
   text-align: center;
   user-select: none;
   cursor: pointer;
+}
+.home .left-button:hover {
+  background-color: rgba(184, 156, 63, .75);
 }
 .home .frozen {
   transition-property: background-color, color, text-shadow;
