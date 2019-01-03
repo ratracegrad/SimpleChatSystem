@@ -19,10 +19,10 @@
         <span>Group communcation made simple. Get productive now</span>
       </div>
       <div class="right-buttons">
-        <router-link to='/rooms' class="join-button">
+        <router-link to='join' class="join-button">
           <span class="button-span">Join existing chat room</span>
         </router-link>
-        <router-link to='/create' class="create-button">
+        <router-link to='create' class="create-button">
           <span class="button-span">Create new chat room</span>
         </router-link>
       </div>
@@ -51,6 +51,7 @@ export default {
         "The hot and the cold are both so intense, but them together it just makes sense",
         "The sky's awake, so I'm awake",
         "I know it all ends tomorrow, so it has to be today",
+        "People make bad choices if they're mad or scared or stressed",
       ],
       frozenQuote: "The sky's awake, so I'm awake",
     }

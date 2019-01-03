@@ -28,9 +28,9 @@ export default new Router({
       component: () => import('./views/testBench.vue'),
     },
     {
-      path: '/rooms',
-      name: 'rooms',
-      component: () => import('./views/Rooms.vue'),
+      path: '/join',
+      name: 'join',
+      component: () => import('./views/Join.vue'),
     },
     {
       path: '/create',

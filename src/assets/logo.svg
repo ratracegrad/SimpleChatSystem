@@ -1,16 +1,17 @@
-<svg width="400" height="450" xmlns="http://www.w3.org/2000/svg">
+<svg width="360" height="400" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
  <g>
   <title>background</title>
-  <rect fill="none" id="canvas_background" height="452" width="402" y="-1" x="-1"/>
+  <rect fill="none" id="canvas_background" height="402" width="362" y="-1" x="-1"/>
   <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
    <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
   </g>
  </g>
  <g>
   <title>Layer 1</title>
-  <ellipse stroke="#333333" ry="219.697093" rx="168.181892" id="svg_13" cy="223.576485" cx="169.7626" stroke-opacity="null" stroke-width="0" fill="#ffffff"/>
-  <rect stroke-width="3" id="svg_3" height="216" width="123" y="103.48819" x="121.540404" stroke="#333333" fill="#333333"/>
-  <path stroke="#333333" transform="rotate(90 156.63763427734372,240.01411437988284) " id="svg_8" d="m23.573247,274.927194l53.22575,-69.82617l212.903,0l-53.22576,69.82617l-212.90299,0z" fill-opacity="null" stroke-width="3" fill="#b89c3f"/>
-  <text font-style="normal" font-weight="normal" stroke="#333333" transform="matrix(2.6953339576721183,0,0,2.4969650291012186,-48.867791295051575,289.71292901085866) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="250" id="svg_10" y="63.677011" x="-2" stroke-width="0" fill="#b89c3f">D</text>
+  <ellipse stroke="#333333" ry="183.838497" rx="155.555625" id="svg_13" cy="199.839108" cx="141.984805" stroke-opacity="null" stroke-width="0" fill="#ffffff"/>
+  <text font-style="normal" font-weight="normal" stroke="#333333" transform="matrix(2.41354458427535,0,0,2.235914553726445,-77.55873308984064,225.47484982386572) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="250" id="svg_10" y="78.735239" x="12.031808" stroke-width="0" fill="#b89c3f">D</text>
+  <rect stroke-width="3" id="svg_3" height="216" width="123" y="73.185146" x="98.30807" stroke="#333333" fill="#333333"/>
+  <path stroke="#333333" transform="rotate(90 133.40528869628906,209.71105957031247) " id="svg_8" d="m0.340914,244.62415l53.22575,-69.82617l212.903,0l-53.22576,69.82617l-212.90299,0z" fill-opacity="null" stroke-width="3" fill="#b89c3f"/>
  </g>
 </svg>

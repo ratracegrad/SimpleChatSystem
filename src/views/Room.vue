@@ -359,4 +359,12 @@ form button:hover {
   font-family: sans-serif;
   font-size: 18px;
 }
+
+@media (max-width: 700px) {
+  #copied-popup {
+    font-size: 15vw;
+    left: calc(50% - 40vw);
+    top: calc(50% - 15vw);
+  }
+}
 </style>
