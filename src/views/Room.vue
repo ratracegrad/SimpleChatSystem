@@ -22,20 +22,21 @@
           <div class="message">[{{ message.username }}]: {{ message.message }}</div>
         </div>
       </div>
-      <NewMessage :username="username" :randomString="randomString"></NewMessage>
+      <form @submit.prevent="createMessage">
+        <input id="input" ref="messageFocus" v-model="newMessage" type="text" name="message" placeholder="Enter Message" autocomplete="off" />
+      </form>
     </div>
     <Particles></Particles>
   </div>
 </template>
 
 <script>
-import NewMessage from '@/components/NewMessage.vue';
 import fb from '@/firebase/init';
 import Particles from '@/components/ParticlesJS.vue';
 
 export default {
   name: 'room',
-  components: { Particles, NewMessage },
+  components: { Particles },
   props: ['roomName', 'randomString', 'password', 'created'],
   data() {
     return {
@@ -43,6 +44,7 @@ export default {
       errorText: null,
       enterName: false,
       messages: [],
+      newMessage: null,
       copied: false,
       deletePrompt: false,
       enteredPassword: null,
@@ -73,16 +75,22 @@ export default {
     } else {
       this.$router.push({ name: 'error' });
     }
-    document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
   },
   mounted() {
     if (localStorage.username) {
       this.username = localStorage.username;
     }
     this.$refs.nameFocus.focus();
-  },
-  updated() {
     document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
+  },
+  watch: {
+    messages() {
+      if (this.messages[this.messages.length - 1].username === this.username) {
+        this.$nextTick(() => {
+          document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
+        })
+      }
+    }
   },
   methods: {
     login() {
@@ -105,9 +113,21 @@ export default {
             timestamp: Date(Date.now()),
           });
         }
+        this.$refs.messageFocus.focus();
       } else {
         this.errorText = 'Please enter a username first!';
         this.$refs.nameFocus.focus();
+      }
+    },
+    createMessage() {
+      this.newMessage = this.newMessage.trim();
+      if (this.newMessage && this.username) {
+        fb.collection(this.randomString).add({
+          username: this.username,
+          message: this.newMessage,
+          timestamp: Date.now(),
+        });
+        this.newMessage = null;
       }
     },
     copy() {

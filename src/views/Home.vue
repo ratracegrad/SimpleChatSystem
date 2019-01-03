@@ -7,7 +7,7 @@
       <div class="left-button">
         About
       </div>
-      <div class="frozen left-button" v-on:click="updateQuote">
+      <div class="frozen left-button" @click="updateQuote">
         {{ frozenQuote }}
       </div>
       <div class="left-button">
@@ -37,40 +37,33 @@ export default {
   data() {
     return {
       frozenQuotes: [
-                       "There it is, the door you love to slam in my face!",
-                       "Love is an open door!",
-                       "This icy force, both foul and fair, has a frozen heart worth mining",
-                       "Beware the frozen heart",
-                       "Conceal don't feel, don't let them know",
-                       "He's got a couple of bugs",
-                       "Some people are worth melting for",
-                       "The past is in the past",
-                       "That perfect girl is gone",
-                       "Raindeers are better than people",
-                       "The heart is not so easily changed, but the head can be persuaded",
-                       "You can't marry a man you just met",
-                       "Somebody's gotta tell him",
-                       "Love is putting someone else’s needs before yours",
-                       "The hot and the cold are both so intense, but them together it just makes sense",
-                       "The sky's awake, so I'm awake",
-                    ],
-      frozenQuote: "The sky's awake, so I'm awake",
+        "There it is, the door you love to slam in my face!",
+        "Love is an open door!",
+        "This icy force, both foul and fair, has a frozen heart worth mining",
+        "Beware the frozen heart",
+        "Conceal don't feel, don't let them know",
+        "Some people are worth melting for",
+        "The past is in the past",
+        "Raindeers are better than people",
+        "The heart is not so easily changed, but the head can be persuaded",
+        "You can't marry a man you just met",
+        "Love is putting someone else’s needs before yours",
+        "The hot and the cold are both so intense, but them together it just makes sense",
+        "The sky's awake, so I'm awake",
+        "I know it all ends tomorrow, so it has to be today",
+      ],
+      frozenQuote: "Random Frozen Quotes",
     }
   },
   methods: {
     updateQuote() {
-      var quoteNum = Math.floor(Math.random() * this.frozenQuotes.length)
-      this.frozenQuote = this.frozenQuotes[quoteNum]
+      var quoteNum = Math.floor(Math.random() * this.frozenQuotes.length);
+      while (this.frozenQuotes[quoteNum] === this.frozenQuote) {
+        var quoteNum = Math.floor(Math.random() * this.frozenQuotes.length);
+      }
+      this.frozenQuote = this.frozenQuotes[quoteNum];
     }
   },
-  computed: {
-   // frozenQuote: function() {
-   //    return frozenQuotes[this.randomNum]
-   //  }
- },
- mounted() {
-   this.updateQuote()
- }
 };
 </script>
 
@@ -88,7 +81,6 @@ body {
   display: flex;
   flex-wrap: nowrap;
   align-items: stretch;
-  overflow: hidden;
 }
 
 /* Left page styles */
@@ -127,8 +119,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  text-align: center;
   user-select: none;
+  cursor: pointer;
 }
 .home .frozen {
   transition-property: background-color, color, text-shadow;
