@@ -42,7 +42,6 @@
       "vue/html-closing-bracket-newline": "error",
       "vue/html-closing-bracket-spacing": "error",
       "vue/html-indent": "error",
-      "vue/html-quotes": "error",
       "vue/mustache-interpolation-spacing": "error",
       "vue/no-spaces-around-equal-signs-in-attribute": "error",
       "vue/no-template-shadow": "error",

@@ -62,7 +62,7 @@ export default {
         quoteNum = Math.floor(Math.random() * this.frozenQuotes.length);
       }
       this.frozenQuote = this.frozenQuotes[quoteNum];
-    }
+    },
   },
   mounted() {
     this.updateQuote()
