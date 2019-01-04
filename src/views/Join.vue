@@ -99,7 +99,7 @@ input {
   overflow: hidden;
   width: 95%;
   height: 60px;
-  background-color: #333;
+  background-color: transparent;
   font-size: 50px;
   border-radius: 60px;
   margin: 6px 1.25%;

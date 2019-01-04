@@ -1,18 +1,18 @@
 <template>
   <div class="home">
     <div class="left-homepage">
-      <div class="left-button">
+      <router-link class="left-button" to="guide">
         Quickstart Guide
-      </div>
-      <div class="left-button">
+      </router-link>
+      <router-link class="left-button" to="about">
         About
-      </div>
+      </router-link>
       <div class="frozen left-button" @click="updateQuote">
         {{ frozenQuote }}
       </div>
-      <div class="left-button">
+      <a class="left-button" href="mailto:chingtheprogrammer@icloud.com">
         Contact
-      </div>
+      </a>
     </div>
     <div class="right-homepage">
       <div class="right-title">
@@ -52,9 +52,10 @@ export default {
         "The sky's awake, so I'm awake",
         "I know it all ends tomorrow, so it has to be today",
         "People make bad choices if they're mad or scared or stressed",
+        "Time's too short to waste another minute",
       ],
       frozenQuote: "Random Frozen Quotes",
-    }
+    };
   },
   methods: {
     updateQuote() {
@@ -82,6 +83,7 @@ body {
   display: flex;
   flex-wrap: nowrap;
   align-items: stretch;
+  overflow: hidden;
 }
 
 /* Left page styles */
@@ -97,18 +99,6 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   flex-basis: 0;
-}
-.home .left-homepage div {
-  margin-top: 28px;
-}
-.home .left-homepage div svg{
-  padding-right: 16px;
-}
-.home .left-homepage div span {
-  color: #e6ecf0;
-  text-decoration: none;
-  margin-top: 5vh;
-  cursor: pointer;
 }
 .home .left-button {
   margin: 3%;
@@ -214,7 +204,8 @@ body {
 }
 @media (max-width: 530px) {
   .home .right-homepage .right-title span {
-    margin: -110px 0px -20px 50px;
+    margin: -110px 0px -20px 10px;
+    padding-right: 0px;
     width: 300px;
     font-size: 25px;
   }
