@@ -53,7 +53,7 @@ export default {
         "I know it all ends tomorrow, so it has to be today",
         "People make bad choices if they're mad or scared or stressed",
       ],
-      frozenQuote: "The sky's awake, so I'm awake",
+      frozenQuote: "Random Frozen Quotes",
     }
   },
   methods: {
@@ -65,9 +65,6 @@ export default {
       this.frozenQuote = this.frozenQuotes[quoteNum];
     },
   },
-  mounted() {
-    this.updateQuote()
-  }
 };
 </script>
 
@@ -131,9 +128,9 @@ body {
   background-color: rgba(184, 156, 63, .75);
 }
 .home .frozen {
+  font-size: 2vw;
   transition-property: background-color, color, text-shadow;
   transition-duration: 600ms;
-
 }
 .home .frozen:hover {
   background-color: #3fb2b8;
@@ -190,7 +187,6 @@ body {
   margin-bottom: 40px;
 }
 
-
 /* Right button animations */
 .create-button, .join-button {
   user-select: none;
@@ -205,5 +201,26 @@ body {
 .join-button:hover {
   background-position: 99.9% 100%;
   cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .home .left-homepage {
+    display: none;
+  }
+  .home .right-homepage {
+    height: calc(100vh - 75px);
+    width: 100vw;
+  }
+}
+@media (max-width: 530px) {
+  .home .right-homepage .right-title span {
+    margin: -110px 0px -20px 50px;
+    width: 300px;
+    font-size: 25px;
+  }
+  .home .right-buttons > * {
+    font-size: 6vw;
+    margin-left: calc(50vw - 300px);
+  }
 }
 </style>

@@ -90,11 +90,44 @@ form {
   margin-left: calc(50vw - 200px);
   margin-top: calc(50vh - 75px - 150px);
 }
-input {
+form input {
   display: block;
   margin-bottom: 50px;
 }
 .errorText {
   margin-top: -40px;
+}
+
+@media (max-height: 480px) {
+  form {
+    margin-left: calc(50vw - 150px);
+    margin-top: calc(50vh - 75px - 110px);
+  }
+  form input {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+  form button {
+    margin-left: 50px;
+    margin-top: 25px;
+  }
+  .errorText {
+    font-size: 14px;
+    margin-top: -25px;
+  }
+}
+@media (max-width: 350px) {
+  form {
+    margin-left: calc(50vw - 150px);
+    margin-top: calc(50vh - 75px - 150px);
+  }
+  form input {
+    font-size: 25px;
+    margin-bottom: 30px;
+  }
+  form button {
+    margin-left: 50px;
+    margin-top: 25px;
+  }
 }
 </style>

@@ -124,4 +124,10 @@ form input {
 .popup {
   top: 0px;
 }
+
+@media (max-width: 700px) {
+  .room {
+    font-size: 42px;
+  }
+}
 </style>
