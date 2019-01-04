@@ -1,5 +1,5 @@
 <template>
-  <div class="main-div">
+  <div class="guide">
     <Particles></Particles>
     <div>
       Welcome to Dorpn. Our goal of the site is to make communication simple. Unlike the other
@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style>
-.main-div {
+.guide {
   font-size: 23px;
   color: #e6ecf0;
 }

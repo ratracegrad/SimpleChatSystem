@@ -52,7 +52,7 @@ export default {
         "The sky's awake, so I'm awake",
         "I know it all ends tomorrow, so it has to be today",
         "People make bad choices if they're mad or scared or stressed",
-        "Time's too short to waste another minute",
+        "Life's too short to waste another minute",
       ],
       frozenQuote: "Random Frozen Quotes",
     };
