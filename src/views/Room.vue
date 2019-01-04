@@ -367,4 +367,35 @@ form button:hover {
     top: calc(50% - 15vw);
   }
 }
+@media (max-width: 350px) {
+  .popup {
+    margin-left: calc(50vw - 150px);
+    margin-top: calc(50vh - 75px - 100px);
+  }
+  form input {
+    font-size: 25px;
+  }
+  .errorText {
+    margin-top: 5px;
+  }
+  form button {
+    margin-left: 50px;
+    margin-top: 30px;
+  }
+  #output div {
+    font-size: 15px;
+  }
+}
+@media (max-height: 570px) {
+  #io-box {
+    height: 50vh;
+    top: calc(55% - 20vh);
+  }
+  #room-name {
+    top: calc(42.5% - 25vh);
+  }
+  #room-link {
+    top: calc(50% - 20vh);
+  }
+}
 </style>

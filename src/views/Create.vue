@@ -122,12 +122,7 @@ form input {
     margin-top: calc(50vh - 75px - 150px);
   }
   form input {
-    font-size: 25px;
     margin-bottom: 30px;
-  }
-  form button {
-    margin-left: 50px;
-    margin-top: 25px;
   }
 }
 </style>
