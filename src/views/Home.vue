@@ -193,6 +193,11 @@ body {
   cursor: pointer;
 }
 
+@media (max-height: 500px) {
+  .home .right-homepage .right-title span {
+    margin: -60px 0px;
+  }
+}
 @media (max-width: 900px) {
   .home .left-homepage {
     display: none;
