@@ -392,7 +392,7 @@ form button:hover {
     top: calc(55% - 20vh);
   }
   #room-name {
-    top: calc(42.5% - 25vh);
+    top: calc(42.5% - 22vh);
   }
   #room-link {
     top: calc(50% - 20vh);
