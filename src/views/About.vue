@@ -17,9 +17,9 @@
       five days and we were at the time of coming up with a site name. We had completely no idea how
       to name our site. Ching Chang even went on a walk for more than an hour outside to search for
       inspiration. We flipped through the dictionary and tried to pull up some random words. Some
-      words we came up with included Ivory, Fractals, Constant, and Inter (because inter.com and
-      intercom). However, all words with the extension of .com were taken by cybersquatters. We had
-      to either create new words or use more than one word. After joking about naming our site
+      words we came up with included Boron, Ivory, Fractals, Constant, and Inter (because inter.com
+      and intercom). However, all words with the extension of .com were taken by cybersquatters. We
+      had to either create new words or use more than one word. After joking about naming our site
       fairisfoulfoulisfairhoverthroughthefogandfilthyair.com to avoid cybersquatters, Voovs decided
       that it would be more professional to only use one word instead of using multiple words or
       phrases. The day after, Ching Chang thought that chatting with other people online is like
