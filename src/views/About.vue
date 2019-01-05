@@ -25,7 +25,7 @@
       words or phrases. The day after, Ching Chang thought that chatting with other people online is
       like talking through a door, and our site opens that door for the users. We combined the word
       door and open and called it Dorpen. Unfortunately, dorpen.com and doorpen.com are both premium
-      domains which cost about $1,500 CAD, so we dropped the e and our site was born!
+      domains that cost about $1,500 CAD, so we dropped the e and our site was born!
     </div>
   </div>
 </template>
