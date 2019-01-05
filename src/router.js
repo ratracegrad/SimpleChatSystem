@@ -23,11 +23,6 @@ export default new Router({
       component: () => import('./views/Guide.vue'),
     },
     {
-      path: '/testBench',
-      name: 'Site test bench',
-      component: () => import('./views/testBench.vue'),
-    },
-    {
       path: '/join',
       name: 'join',
       component: () => import('./views/Join.vue'),

@@ -76,10 +76,6 @@ export default {
 </script>
 
 <style scoped>
-@font-face {
-  font-family: YT_font;
-  src: url('../assets/Fonts/YT_font.ttf');
-}
 
 input {
   caret-color: #b89c3f;
@@ -95,7 +91,8 @@ input {
 }
 .room {
   color: #e6ecf0;
-  font-family: YT_font;
+  letter-spacing: -1px;
+  font-family: Lucida Grande;
   overflow: hidden;
   width: 95%;
   height: 60px;

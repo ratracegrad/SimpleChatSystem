@@ -72,7 +72,7 @@ export default {
 <style>
 @font-face {
   font-family: PoetsenOne;
-  src: url('../assets/Fonts/PoetsenOne-Regular.ttf');
+  src: url('../assets/PoetsenOne-Regular.ttf');
 }
 
 /* General styles */

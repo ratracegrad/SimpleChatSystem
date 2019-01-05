@@ -180,11 +180,7 @@ export default {
 <style>
 @font-face {
   font-family: PoetsenOne;
-  src: url('../assets/Fonts/PoetsenOne-Regular.ttf');
-}
-@font-face {
-  font-family: YT_font;
-  src: url('../assets/Fonts/YT_font.ttf');
+  src: url('../assets/PoetsenOne-Regular.ttf');
 }
 
 /* General styles */
@@ -198,7 +194,8 @@ body {
   top: calc(55% - 30vh);
   left: calc(50% - 40vw);
   color: #e6ecf0;
-  font-family: YT_font, sans-serif;
+  letter-spacing: -1px;
+  font-family: Lucida Grande, sans-serif;
 }
 #io-box hr {
   margin: 0;
@@ -288,12 +285,12 @@ body {
 .message {
   font-size: 24px;
   margin: 8px;
-  letter-spacing: 1px;
 }
 
 /* Input box styles */
 #input {
-  font-family: YT_font, sans-serif;
+  letter-spacing: -1px;
+  font-family: Lucida Grande, sans-serif;
   padding-left: 15px;
   margin-left: 6px;
   outline: none;
