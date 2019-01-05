@@ -42,17 +42,17 @@ export default {
         "Conceal don't feel, don't let them know",
         "Some people are worth melting for",
         "The past is in the past",
-        "Raindeers are better than people",
+        "Reindeers are better than people",
         "The heart is not so easily changed, but the head can be persuaded",
-        "You can\'t marry a man you just met",
+        "You can't marry a man you just met",
         "Love is putting someone else’s needs before yours",
         "The hot and the cold are both so intense, but them together it just makes sense",
-        "The sky\'s awake, so I\'m awake",
+        "The sky's awake, so I'm awake",
         "I know it all ends tomorrow, so it has to be today",
         "People make bad choices if they're mad or scared or stressed",
         "Life's too short to waste another minute",
       ],
-      frozenQuote: "The sky\'s awake, so I\'m awake",
+      frozenQuote: "Random Frozen Quotes",
     };
   },
   methods: {
@@ -64,9 +64,6 @@ export default {
       this.frozenQuote = this.frozenQuotes[quoteNum];
     },
   },
-  mounted() {
-    this.updateQuote()
-  }
 };
 </script>
 
@@ -201,7 +198,11 @@ body {
 }
 @media (max-width: 900px) {
   .home .left-homepage {
-    display: none;
+    position: absolute;
+    top: 100vh;
+  }
+  .home .frozen {
+    font-size: 4.4vw;
   }
   .home .right-homepage {
     height: calc(100vh - 75px);

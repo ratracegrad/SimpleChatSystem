@@ -22,7 +22,7 @@ export default {
 };
 </script>
 
-<style scope>
+<style scoped>
 .main-div {
   display: flex;
   flex-direction: row;
@@ -33,5 +33,6 @@ export default {
   background-color: #fff;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 </style>

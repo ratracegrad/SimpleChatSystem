@@ -20,11 +20,11 @@
       words we came up with included Boron, Ivory, Fractals, Constant, and Inter (because inter.com
       and intercom). However, all words with the extension of .com were taken by cybersquatters. We
       had to either create new words or use more than one word. After joking about naming our site
-      fairisfoulfoulisfairhoverthroughthefogandfilthyair.com to avoid cybersquatters, Voovs decided
-      that it would be more professional to only use one word instead of using multiple words or
-      phrases. The day after, Ching Chang thought that chatting with other people online is like
-      talking through a door, and our site opens that door for the users. We combined the word door
-      and open and called it Dorpen. Unfortunately, dorpen.com and doorpen.com are both premium
+      <em>fairisfoulfoulisfairhoverthroughthefogandfilthyair.com</em> to avoid cybersquatters, Voovs
+      decided that it would be more professional to only use one word instead of using multiple
+      words or phrases. The day after, Ching Chang thought that chatting with other people online is
+      like talking through a door, and our site opens that door for the users. We combined the word
+      door and open and called it Dorpen. Unfortunately, dorpen.com and doorpen.com are both premium
       domains which cost about $1,500 CAD, so we dropped the e and our site was born!
     </div>
   </div>
@@ -39,10 +39,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .about {
   letter-spacing: 1.5px;
   font-size: 23px;
   color: #e6ecf0;
+  word-wrap: break-word;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-div">
     <form v-if="!enterName" class="popup" @submit.prevent="login">
       <input ref="nameFocus" v-model="username" type="text" placeholder="Username" name="username" autocomplete="off" />
       <div v-if="errorText" class="errorText">{{ errorText }}</div>
@@ -131,10 +131,19 @@ export default {
       }
     },
     copy() {
-      const link = document.createElement('input');
+      const link = document.createElement('textArea');
       link.value = window.location.href;
       document.getElementById('room-link').appendChild(link);
-      link.select();
+      if (navigator.userAgent.match(/ipad|iphone|ipod/i)) {
+        const range = document.createRange();
+        range.selectNodeContents(link);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        link.setSelectionRange(0, 999999);
+      } else {
+        link.select();
+      }
       document.execCommand('copy');
       document.getElementById('room-link').removeChild(link);
       this.copied = true;
@@ -213,6 +222,8 @@ body {
   font-size: 40px;
   font-family: PoetsenOne;
   color: #b89c3f;
+  width: calc(140vw - 50%);
+  overflow: hidden;
 }
 #room-link {
   position: absolute;
@@ -281,6 +292,7 @@ body {
   justify-content: flex-end;
   align-items: flex-start;
   overflow: scroll;
+  word-wrap: break-word;
 }
 #output::-webkit-scrollbar {
   display: none;
