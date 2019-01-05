@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     buttonClass(index) {
-      return `button${index % 4}`
+      return `button${index % 4}`;
     },
     showPopup(room) {
       this.room = room;

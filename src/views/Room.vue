@@ -77,20 +77,20 @@ export default {
       this.$router.push({ name: 'error' });
     }
   },
-  mounted() {
-    if (localStorage.username) {
-      this.username = localStorage.username;
-    }
-    this.$refs.nameFocus.focus();
-  },
   watch: {
     messages() {
       if (this.messages[this.messages.length - 1].username === this.username) {
         this.$nextTick(() => {
           document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
-        })
+        });
       }
+    },
+  },
+  mounted() {
+    if (localStorage.username) {
+      this.username = localStorage.username;
     }
+    this.$refs.nameFocus.focus();
   },
   methods: {
     login() {
