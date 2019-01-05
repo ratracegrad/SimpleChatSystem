@@ -182,6 +182,8 @@ export default {
   font-family: PoetsenOne;
   src: url('../assets/PoetsenOne-Regular.ttf');
 }
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
 /* General styles */
 body {
@@ -194,8 +196,9 @@ body {
   top: calc(55% - 30vh);
   left: calc(50% - 40vw);
   color: #e6ecf0;
-  letter-spacing: -1px;
-  font-family: Lucida Grande, sans-serif;
+  letter-spacing: .3px;
+  font-family: 'Varela Round', 'Source Sans Pro', sans-serif;
+  text-justify: inter-character;
 }
 #io-box hr {
   margin: 0;
@@ -290,7 +293,7 @@ body {
 /* Input box styles */
 #input {
   letter-spacing: -1px;
-  font-family: Lucida Grande, sans-serif;
+  font-family: 'Varela Round', 'Source Sans Pro', sans-serif;
   padding-left: 15px;
   margin-left: 6px;
   outline: none;

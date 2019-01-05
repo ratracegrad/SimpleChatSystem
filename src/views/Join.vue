@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     buttonClass(index) {
-      return `button${index % 3}`
+      return `button${index % 4}`
     },
     showPopup(room) {
       this.room = room;
@@ -76,6 +76,8 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
 input {
   caret-color: #b89c3f;
@@ -91,17 +93,31 @@ input {
 }
 .room {
   color: #e6ecf0;
-  letter-spacing: -1px;
-  font-family: Lucida Grande;
+  font-family: 'Varela Round', 'Source Sans Pro';
   overflow: hidden;
   width: 95%;
   height: 60px;
-  background-color: transparent;
+  background-color: #333;
   font-size: 50px;
   border-radius: 60px;
-  margin: 6px 1.25%;
-  padding: 0px 1.25%;
-  cursor: pointer;
+  margin: 6px 6px;
+  padding-left: 10px;
+}
+.button0 {
+  text-decoration: underline;
+  text-decoration-color: #76b83f;
+}
+.button1 {
+  text-decoration: underline;
+  text-decoration-color: #813fb8;
+}
+.button2 {
+  text-decoration: underline;
+  text-decoration-color: #b83f75;
+}
+.button3 {
+  text-decoration: underline;
+  text-decoration-color: #b85f3f;
 }
 .button0:hover {
   background-color: #76b83f;
@@ -112,6 +128,18 @@ input {
 .button2:hover {
   background-color: #b83f75;
 }
+.button3:hover {
+  background-color: #b85f3f;
+}
+.room:hover {
+  cursor: pointer;
+}
+.notExist {
+  font-size: 100px;
+  color: #e6ecf0;
+  margin-top: 50px;
+  margin-left: 15px;
+}
 form input {
   padding: 0px;
   border: none;
@@ -121,7 +149,6 @@ form input {
 .popup {
   top: 0px;
 }
-
 @media (max-width: 700px) {
   .room {
     font-size: 42px;

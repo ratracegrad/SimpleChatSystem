@@ -65,7 +65,7 @@ export default {
   methods: {
     enter() {
       if (this.roomName.trim().replace(/\s+/, ' ') && this.password && this.confirmPassword && !this.errorText && !this.passwordAlert && !this.confirmAlert) {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 1; i++) {
           this.randomString += this.possible.charAt(Math.floor(Math.random() * this.possible.length));
         }
         this.$router.push({

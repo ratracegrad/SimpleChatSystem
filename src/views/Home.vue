@@ -10,9 +10,7 @@
       <div class="frozen left-button" @click="updateQuote">
         {{ frozenQuote }}
       </div>
-      <a class="left-button" href="mailto:chingtheprogrammer@icloud.com">
-        Contact
-      </a>
+      <router-link class="left-button" to="contact">Contact</router-link>
     </div>
     <div class="right-homepage">
       <div class="right-title">
@@ -46,15 +44,15 @@ export default {
         "The past is in the past",
         "Raindeers are better than people",
         "The heart is not so easily changed, but the head can be persuaded",
-        "You can't marry a man you just met",
+        "You can\'t marry a man you just met",
         "Love is putting someone else’s needs before yours",
         "The hot and the cold are both so intense, but them together it just makes sense",
-        "The sky's awake, so I'm awake",
+        "The sky\'s awake, so I\'m awake",
         "I know it all ends tomorrow, so it has to be today",
         "People make bad choices if they're mad or scared or stressed",
         "Life's too short to waste another minute",
       ],
-      frozenQuote: "Random Frozen Quotes",
+      frozenQuote: "The sky\'s awake, so I\'m awake",
     };
   },
   methods: {
@@ -66,6 +64,9 @@ export default {
       this.frozenQuote = this.frozenQuotes[quoteNum];
     },
   },
+  mounted() {
+    this.updateQuote()
+  }
 };
 </script>
 

@@ -18,6 +18,11 @@ export default new Router({
       component: () => import('./views/About.vue'),
     },
     {
+      path: '/contact',
+      name: 'contact',
+      component: () => import('./views/Contact.vue')
+    },
+    {
       path: '/guide',
       name: 'guide',
       component: () => import('./views/Guide.vue'),
