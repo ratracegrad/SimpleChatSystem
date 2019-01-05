@@ -5,8 +5,6 @@ firebase
 vue.config.js
 
 # local env files
-.env
-.env.production
 .env.local
 .env.*.local
 
