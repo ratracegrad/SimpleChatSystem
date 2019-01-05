@@ -4,7 +4,7 @@
     <div class="main-div">
       <div class="profile">
         <h1>Ching</h1>
-        chingtheprogrammer@icloud.com
+        <a href="mailto:chingtheprogrammer@icloud.com">chingtheprogrammer@icloud.com</a>
       </div>
       <div class="profile">
         <h1>Voovs</h1>

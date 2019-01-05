@@ -116,13 +116,17 @@ form input {
     margin-top: -25px;
   }
 }
-@media (max-width: 350px) {
+@media (max-width: 430px) {
   form {
-    margin-left: calc(50vw - 150px);
+    margin-left: calc(50vw - 140px);
     margin-top: calc(50vh - 75px - 150px);
   }
   form input {
+    width: 250px;
     margin-bottom: 30px;
+  }
+  form button {
+    margin-left: 35px;
   }
 }
 </style>
