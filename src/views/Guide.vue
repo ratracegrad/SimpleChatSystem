@@ -24,15 +24,15 @@
       currently in the room, can click the "Invitation link" button to copy the rooms link. It
       should look something like this:
     </p>
-    <div>https://dorpn.com/#/room/G5WGl9BdXr/1234</div>
-    <h6><span style="color: #b89c3f;">https://dorpn.com/#/room/</span>G5WGl9BdXr/1234</h6>
+    <div>https://dorpn.com/#/room/aLhZp8/1234</div>
+    <h6><span style="color: #b89c3f;">https://dorpn.com/#/room/</span>aLhZp8/1234</h6>
     <p>This portion is common to all room links</p>
-    <h6>https://dorpn.com/#/room/<span style="color: #b89c3f;">G5WGl9BdXr/</span>1234</h6>
+    <h6>https://dorpn.com/#/room/<span style="color: #b89c3f;">aLhZp8/</span>1234</h6>
     <p>
       We generate a random number, unique to every room, which acts as a sort of extra safe guard.
       It's case sensitive, so use the exact code
     </p>
-    <h6>https://dorpn.com/#/room/G5WGl9BdXr/<span style="color: #b89c3f;">1234</span></h6>
+    <h6>https://dorpn.com/#/room/aLhZp8/<span style="color: #b89c3f;">1234</span></h6>
     <p>The last part is your room password. The password is also used on the join rooms page</p>
     <h4 @click="redirectTo('join')">Join Rooms Page</h4>
     <p>
