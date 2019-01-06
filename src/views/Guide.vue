@@ -27,7 +27,7 @@
     <div>https://dorpn.com/#/room/G5WGl9BdXr/1234</div>
     <h6><span style="color: #b89c3f;">https://dorpn.com/#/room/</span>G5WGl9BdXr/1234</h6>
     <p>This portion is common to all room links</p>
-    <h6>https://dorpn.com/#/room<span style="color: #b89c3f;">G5WGl9BdXr/</span>1234</h6>
+    <h6>https://dorpn.com/#/room/<span style="color: #b89c3f;">G5WGl9BdXr/</span>1234</h6>
     <p>
       We generate a random number, unique to every room, which acts as a sort of extra safe guard.
       It's case sensitive, so use the exact code

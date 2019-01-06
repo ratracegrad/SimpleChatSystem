@@ -48,7 +48,7 @@ export default {
   width: calc(300px + 10vw);
   text-align: center;
   border-top: 6px solid #b89c3f;
-  transition-duration: 0.1s;
+  transition-duration: 0.2s;
   box-shadow: 0px 4px 6px 0px rgba(63, 178, 184, 0.3);
   transform: translateY(0px);
 }
