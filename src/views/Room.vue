@@ -50,6 +50,20 @@ export default {
       enteredPassword: null,
     };
   },
+  watch: {
+    messages() {
+      if (this.messages[this.messages.length - 1].username === this.username) {
+        this.$nextTick(() => {
+          document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
+        });
+      }
+    },
+    newMessage() {
+      if (this.newMessage.length > 400) {
+        this.newMessage = this.newMessage.substring(0, 400);
+      }
+    },
+  },
   created() {
     if (this.password && this.randomString) {
       fb.collection(this.randomString).orderBy('timestamp').onSnapshot((snapshot) => {
@@ -76,15 +90,6 @@ export default {
     } else {
       this.$router.push({ name: 'error' });
     }
-  },
-  watch: {
-    messages() {
-      if (this.messages[this.messages.length - 1].username === this.username) {
-        this.$nextTick(() => {
-          document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
-        });
-      }
-    },
   },
   mounted() {
     if (localStorage.username) {
@@ -122,16 +127,12 @@ export default {
     createMessage() {
       this.newMessage = this.newMessage.trim();
       if (this.newMessage && this.username) {
-        if (this.newMessage.length <= 400) {
-          fb.collection(this.randomString).add({
-            username: this.username,
-            message: this.newMessage,
-            timestamp: Date.now(),
-          });
-          this.newMessage = null;
-        } else {
-          alert("Bro, do you really need to send a message that long? Our character limit is 400")
-        }
+        fb.collection(this.randomString).add({
+          username: this.username,
+          message: this.newMessage,
+          timestamp: Date.now(),
+        });
+        this.newMessage = null;
       }
     },
     copy() {
