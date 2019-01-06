@@ -23,7 +23,7 @@
         <h4>Using URL</h4>
           <p>
             Using a url is the most simple way of getting into your chat room. The creator, or anyone
-            currently in the room, can click the "Share Room link" button to copy the room's link. It
+            currently in the room, can click the "Share Room Link" button to copy the room's link. It
             should look something like this:
           </p>
           <div style="color: #3fb2b8;">https://dorpn.com/#/room/aLhZp8/1234</div>

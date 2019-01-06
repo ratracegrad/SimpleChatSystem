@@ -27,6 +27,7 @@ export default {
       password: null,
       room: null,
       rooms: [],
+      randomNum: 0,
     };
   },
   computed: {
@@ -40,13 +41,14 @@ export default {
         this.rooms.push(change.doc.id);
       });
     });
+    this.randomNum = Math.floor(Math.random() * 3);
   },
   mounted() {
     this.$refs.focus.focus();
   },
   methods: {
     buttonClass(index) {
-      return `button${index % 4}`;
+      return `button${(index + this.randomNum) % 4}`;
     },
     showPopup(room) {
       this.room = room;
@@ -96,11 +98,11 @@ input {
   font-family: 'Varela Round', 'Source Sans Pro';
   overflow: hidden;
   width: 95%;
-  height: 60px;
+  height: auto;
   background-color: transparent;
-  font-size: 50px;
+  font-size: calc(2px + 4vw);
   border-radius: 60px;
-  margin: 6px 6px;
+  margin: 6px;
   padding-left: 10px;
 }
 .button0 {
@@ -151,7 +153,7 @@ form input {
 }
 @media (max-width: 700px) {
   .room {
-    font-size: 42px;
+    /* font-size: 42px; */
   }
 }
 </style>
