@@ -52,7 +52,7 @@ export default {
         "People make bad choices if they're mad or scared or stressed",
         "Life's too short to waste another minute",
       ],
-      frozenQuote: "Random Frozen Quotes",
+      frozenQuote: "The sky\'s awake, so I\'m awake",
     };
   },
   methods: {
@@ -64,6 +64,9 @@ export default {
       this.frozenQuote = this.frozenQuotes[quoteNum];
     },
   },
+  mounted() {
+    this.updateQuote()
+  }
 };
 </script>
 
