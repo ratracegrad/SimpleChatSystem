@@ -122,12 +122,16 @@ export default {
     createMessage() {
       this.newMessage = this.newMessage.trim();
       if (this.newMessage && this.username) {
-        fb.collection(this.randomString).add({
-          username: this.username,
-          message: this.newMessage,
-          timestamp: Date.now(),
-        });
-        this.newMessage = null;
+        if (this.newMessage.length <= 400) {
+          fb.collection(this.randomString).add({
+            username: this.username,
+            message: this.newMessage,
+            timestamp: Date.now(),
+          });
+          this.newMessage = null;
+        } else {
+          alert("Bro, do you really need to send a message that long? Our character limit is 400")
+        }
       }
     },
     copy() {
