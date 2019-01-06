@@ -10,7 +10,7 @@
       <h2>Creating a Room</h2>
         <p>
           Simply go to the "create room" page, <span class="link" @click="redirectTo('create')">found here</span>, or
-          on the <span class="link" @click="redirectTo('home')">home page</span>. You'll be asked to provide a room name and
+          on the <span class="link" @click="redirectTo('')">home page</span>. You'll be asked to provide a room name and
           password. Make sure you can give this password, or the URL, to your group members
         </p>
         <h4>Lost password and URL</h4>
