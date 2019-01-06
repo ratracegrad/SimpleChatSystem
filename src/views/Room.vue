@@ -13,7 +13,7 @@
     </form>
     <div v-if="!enterName || deletePrompt" class="cancel" @click="cancel"></div>
     <div id="room-name">{{ roomName }}</div>
-    <div id="room-link" @click="copy">Invitation Link</div>
+    <div id="room-link" @click="copy">Share Room Link</div>
     <!-- <div class="deleteButton" @click="askDelete">Delete Room</div> -->
     <div v-if="copied" id="copied-popup">Link Copied</div>
     <div id="io-box">

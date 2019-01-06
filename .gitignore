@@ -3,6 +3,7 @@ node_modules
 /dist
 firebase
 vue.config.js
+testBench.vue
 
 # local env files
 .env.local
