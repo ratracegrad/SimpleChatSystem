@@ -1,21 +1,9 @@
-# SimpleChatSystem
+# SimpleChatSystem (Production model)
 
-## Project setup
-```
-npm install
-```
+[Working site here!](https://www.dorpn.com)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Texting with people who don't have the same social media has never been easier
+Create your own text room in seconds and begin the conversation
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
+[Join our public beta chat here](https://dorpn.com/#/room/aLhZp8/1234)
