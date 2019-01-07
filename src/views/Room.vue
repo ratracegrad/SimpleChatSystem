@@ -56,6 +56,8 @@ export default {
         this.$nextTick(() => {
           document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
         });
+      } else {
+        new Notification(`${this.messages[this.messages.length - 1].username} sent a new message to ${this.roomName}`);
       }
     },
     newMessage() {
@@ -119,6 +121,7 @@ export default {
           });
         }
         this.$refs.messageFocus.focus();
+        Notification.requestPermission();
       } else {
         this.errorText = 'Please enter a username first!';
         this.$refs.nameFocus.focus();

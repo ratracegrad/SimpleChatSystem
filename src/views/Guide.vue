@@ -44,13 +44,15 @@
               Click on you room's name and provide your room's password. Anyone already in the
               room will see the password at the end of the URL, in the address bar (explained above)
             </p>
+        <h4 style="color: #b89c3f;">Once you are in the room, remember to allow push notification to be notified when new
+        messages are sent</h4>
       <h2>Room deletion</h2>
         <p>
           All rooms will be deleted roughly 2 weeks after their creation. If you want to keep a certain
           room open longer, or delete it prematurely,
           <span class="link" @click="redirectTo('contact')">send us an email here</span>.
-          Expect a response in about 4-8 hours
-          </p>
+          Expect a response in about 0-8 hours
+        </p>
     </div>
   </div>
 </template>
