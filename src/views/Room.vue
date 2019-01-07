@@ -57,7 +57,11 @@ export default {
           document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
         });
       } else {
-        new Notification(`${this.messages[this.messages.length - 1].username} sent a new message to ${this.roomName}`);
+        new Notification(`${this.messages[this.messages.length - 1].username} sent a new message to ${this.roomName}`,
+          {
+            body: this.messages[this.messages.length - 1].message,
+          }
+        );
       }
     },
     newMessage() {
