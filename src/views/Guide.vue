@@ -7,6 +7,11 @@
         texting applications, there's no need to create an account; ideal for quick texts. This site is
         especially useful to text with makeshift groups, like those created for group projects
       </p>
+      <video autoplay loop muted src="@/assets/create.mp4"></video>
+      <video autoplay loop muted src="@/assets/joinLink.mp4"></video>
+      <video autoplay loop muted src="@/assets/joinPage.mp4"></video>
+      <video autoplay loop muted src="@/assets/sendLink.mp4"></video>
+      <video autoplay loop muted src="@/assets/important.mp4"></video>
       <h2>Creating a Room</h2>
         <p>
           Simply go to the "create room" page, <span class="link" @click="redirectTo('create')">found here</span>, or
