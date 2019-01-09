@@ -91,7 +91,7 @@ body {
   background-color: #333;
   height: calc(100vh - 75px);
   font-family: PoetsenOne, sans-serif;
-  font-size: 28px;
+  font-size: 2vw;
   cursor: default;
   display: flex;
   flex-direction: row;
@@ -200,6 +200,7 @@ body {
   .home .left-homepage {
     position: absolute;
     top: 100vh;
+    font-size: 4.4vw;
   }
   .home .frozen {
     font-size: 4.4vw;
