@@ -7,7 +7,6 @@
         texting applications, there's no need to create an account; ideal for quick texts. This site
         is especially useful to text with makeshift groups, like those created for group projects
       </p>
-      <!-- <video autoplay loop muted src="@/assets/sendLink.mp4"></video> -->
       <hr />
       <div class="row">
         <div class="left-text">
@@ -39,23 +38,20 @@
             anyone currently in the room, can click the "Share Room Link" button to copy the room's
             link. It should look something like this:
           </p>
+          <div style="border: 2px solid #e6ecf0; margin-bottom: 30px; padding-top: 10px;">
+            <span style="color: #3fb2b8;">https://dorpn.com/#/room/</span><span style="color: #D32B92;">QNkvcP/</span><span style="color: #b89c3f;">1234</span></span>
+            <hr style="margin-bottom: 5px" />
+            <div style="color: #3fb2b8;">Common to all room links</div>
+            <div style="color: #D32B92;">A random number that is unique to every room. Acts a safe
+              guard. It's case sensitive, so use the exact code</div>
+            <div style="color: #b89c3f;">Your room password. Also used on the join rooms page, so you
+              can reference it here</div>
+          </div>
         </div>
       </div>
-      <div style="color: #3fb2b8;">https://dorpn.com/#/room/QNkvcP/1234</div>
-      <h5><span style="color: #3fb2b8;">https://dorpn.com/#/room/</span>QNkvcP/1234 &lt==
-        <span style="font-size: 24px;">This portion is common to all room links</span>
-      </h5>
-      <h5>https://dorpn.com/#/room/<span style="color: #3fb2b8;">QNkvcP/</span>1234 &lt==
-        <span style="font-size: 24px;">We generate a random number, unique to every room, which
-          acts as a sort of extra safe guard. It's case sensitive, so use the exact code</span>
-      </h5>
-      <h5>https://dorpn.com/#/room/QNkvcP/<span style="color: #3fb2b8;">1234</span> &lt==
-        <span style="font-size: 24px;">The last part is your room password. The password is also
-          used on the join rooms page, so you can reference it here</span>
-      </h5>
       <div class="row">
         <div class="left-text">
-          <h4 @click="redirectTo('join')">Join Room Page</h4>
+          <h4>Join Room Page</h4>
           <p>
             This route will allow you to access your room through the name and password. Rooms are
             sorted alphabetically. Use the search bar at the top to filter through rooms by name.
@@ -118,6 +114,10 @@ h5 {
   height: auto;
   margin: 15px 0px;
 }
+.row > * {
+  flex-direction: column;
+  align-self: center;
+}
 .row .left-text, .right-text {
   width: calc(60% - 8vw);
   float: left;
@@ -130,8 +130,6 @@ h5 {
   text-align: center;
 }
 .row video {
-  flex-direction: column;
-  align-self: center;
   width: 40%;
   border: 2px solid #e6ecf0;
 }
