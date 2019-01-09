@@ -30,13 +30,13 @@
       <hr />
       <h2>Entering a Room</h2>
       <div class="row">
-        <video autoplay loop muted src="@/assets/joinLink.mp4"></video>
+        <video autoplay loop muted src="@/assets/sendLink.mp4"></video>
         <div class="right-text">
           <h4>Using URL</h4>
           <p>
             Using a url is the most simple way of getting into your chat room. The creator, or
             anyone currently in the room, can click the "Share Room Link" button to copy the room's
-            link. It should look something like this:
+            link. The link should look something like this:
           </p>
         </div>
       </div>
