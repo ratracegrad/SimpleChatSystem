@@ -4,8 +4,8 @@
     <div class="text-portion">
       <p>
         Welcome to Dorpn. Our goal of the site is to make communication simple. Unlike the other
-        texting applications, there's no need to create an account; ideal for quick texts. This site is
-        especially useful to text with makeshift groups, like those created for group projects
+        texting applications, there's no need to create an account; ideal for quick texts. This site
+        is especially useful to text with makeshift groups, like those created for group projects
       </p>
       <!-- <video autoplay loop muted src="@/assets/sendLink.mp4"></video> -->
       <hr />
@@ -13,18 +13,20 @@
         <div class="left-text">
           <h2>Creating a Room</h2>
           <p>
-            Simply go to the "create room" page, <span class="link" @click="redirectTo('create')">found here</span>, or
-            on the <span class="link" @click="redirectTo('')">home page</span>. You'll be asked to provide a room name and
-            password. Make sure you can give this password, or the URL, to your group members
+            Simply go to the "create room" page, <span class="link" @click="redirectTo('create')">
+            found here</span>, or on the <span class="link" @click="redirectTo('')">home page</span>.
+            You'll be asked to provide a room name and password. Make sure you can give this
+            password, or the URL, to your group members
           </p>
         </div>
         <video autoplay loop muted src="@/assets/create.mp4"></video>
       </div>
       <h4>Lost password and URL</h4>
       <p>
-        If you do lose your password and URL, we'd strongly recommend just creating another room. If this, for whatever
-        reason is not an option, send us an <span class="link" @click="redirectTo('contact')">email here</span>. You'll
-        need to provide a rough guess for when you created the room and some messages you sent
+        If you do lose your password and URL, we'd strongly recommend just creating another room. If
+        this, for whatever reason is not an option, send us an
+        <span class="link" @click="redirectTo('contact')">email here</span>. You'll need to provide
+        a rough guess for when you created the room and some messages you sent
       </p>
       <hr />
       <h2>Entering a Room</h2>
@@ -33,9 +35,9 @@
         <div class="right-text">
           <h4>Using URL</h4>
           <p>
-            Using a url is the most simple way of getting into your chat room. The creator, or anyone
-            currently in the room, can click the "Share Room Link" button to copy the room's link. It
-            should look something like this:
+            Using a url is the most simple way of getting into your chat room. The creator, or
+            anyone currently in the room, can click the "Share Room Link" button to copy the room's
+            link. It should look something like this:
           </p>
         </div>
       </div>
@@ -57,21 +59,21 @@
           <p>
             This route will allow you to access your room through the name and password. Rooms are
             sorted alphabetically. Use the search bar at the top to filter through rooms by name.
-            Click on you room's name and provide your room's password. Anyone already in the
-            room will see the password at the end of the URL, in the address bar (explained above)
+            Click on you room's name and provide your room's password. Anyone already in the room
+            will see the password at the end of the URL, in the address bar (explained above)
           </p>
         </div>
         <video autoplay loop muted src="@/assets/joinPage.mp4"></video>
       </div>
-      <h4 style="color: #b89c3f;">Once you are in the room, remember to allow push notification to be notified when new
-      messages are sent</h4>
+      <h4 style="color: #b89c3f;">Once you are in the room, remember to allow push notification to
+        be notified when new messages are sent</h4>
       <hr />
       <h2>Room deletion</h2>
       <p>
-        All rooms will be deleted roughly 2 weeks after their creation. If you want to keep a certain
-        room open longer, or delete it prematurely,
-        <span class="link" @click="redirectTo('contact')">send us an email here</span>.
-        Expect a response in about 0-8 hours
+        All rooms will be deleted roughly 2 weeks after their creation. If you want to keep a
+        certain room open longer, or delete it prematurely,
+        <span class="link" @click="redirectTo('contact')">send us an email here</span>. Expect a
+        response in about 0-8 hours
       </p>
     </div>
   </div>
