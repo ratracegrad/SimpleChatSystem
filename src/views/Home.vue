@@ -141,7 +141,7 @@ body {
 }
 .home .right-homepage .right-title {
   font-family: PoetsenOne, sans-serif;
-  font-size: 40px;
+  font-size: 42px;
   color: #e6ecf0;
   margin-bottom: 30px;
 }

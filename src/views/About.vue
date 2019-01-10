@@ -36,9 +36,8 @@
       </ul>
       <h2>Other Sites</h2>
       <div>
-        Besides this site, we have also made some other sites (independently). If you are
-        interested, you can check out Ching Chang's personal website at
-        <a href="https://chingchang.ca">chingchang.ca</a>, or Voovs' personal site at
+        If you are interested in our personal sites, feel free to check out Ching Chang's personal
+        website at <a href="https://chingchang.ca">chingchang.ca</a>, and Voovs' personal site at
         <a href="https://acumensyndicate.ca">acumensyndicate.ca</a>.
       </div>
     </div>

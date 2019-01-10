@@ -18,7 +18,7 @@
             password, or the URL, to your group members
           </p>
         </div>
-        <video autoplay loop muted src="@/assets/create.mp4"></video>
+        <video autoplay loop muted playsinline src="@/assets/create.mp4"></video>
       </div>
       <h4>Lost password and URL</h4>
       <p>
@@ -30,7 +30,7 @@
       <hr />
       <h2>Entering a Room</h2>
       <div class="row">
-        <video autoplay loop muted src="@/assets/sendLink.mp4"></video>
+        <video autoplay loop muted playsinline src="@/assets/sendLink.mp4"></video>
         <div class="right-text">
           <h4>Using URL</h4>
           <p>
@@ -59,7 +59,7 @@
             will see the password at the end of the URL, in the address bar (explained above)
           </p>
         </div>
-        <video autoplay loop muted src="@/assets/joinPage.mp4"></video>
+        <video autoplay loop muted playsinline src="@/assets/joinPage.mp4"></video>
       </div>
       <h4 style="color: #b89c3f;">Once you are in the room, remember to allow push notification to
         be notified when new messages are sent</h4>
