@@ -99,21 +99,18 @@ input {
   border-radius: 60px;
   margin: 6px;
   padding-left: 10px;
+  text-decoration: underline;
 }
 .button0 {
-  text-decoration: underline;
   text-decoration-color: #76b83f;
 }
 .button1 {
-  text-decoration: underline;
   text-decoration-color: #813fb8;
 }
 .button2 {
-  text-decoration: underline;
   text-decoration-color: #b83f75;
 }
 .button3 {
-  text-decoration: underline;
   text-decoration-color: #b85f3f;
 }
 .button0:hover {
@@ -145,10 +142,5 @@ form input {
 }
 .popup {
   top: 0px;
-}
-@media (max-width: 700px) {
-  .room {
-    /* font-size: 42px; */
-  }
 }
 </style>

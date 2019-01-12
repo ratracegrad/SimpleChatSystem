@@ -234,6 +234,7 @@ body {
   color: #b89c3f;
   width: calc(140vw - 50%);
   overflow: hidden;
+  white-space: nowrap;
 }
 #room-link {
   position: absolute;
