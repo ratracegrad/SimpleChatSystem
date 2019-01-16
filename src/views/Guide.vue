@@ -45,7 +45,7 @@
         <hr style="margin-bottom: 5px; margin-left: -5px;" />
         <div style="color: #3fb2b8;">Common to all room links</div>
         <div style="color: #D32B92;">A random number that is unique to every room. Acts a safe
-          guard. It's case sensitive, so use the exact code</div>
+          guard. It is case sensitive, so use the exact code</div>
         <div style="color: #b89c3f;">Your room password. Also used on the join rooms page, so you
           can reference it here</div>
       </div>
