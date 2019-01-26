@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="link-explained">
-        <span style="color: #3fb2b8;">https://dorpn.com/#/room/</span><span style="color: #D32B92;">QNkvcP/</span><span style="color: #b89c3f;">1234</span></span>
+        <span style="color: #3fb2b8;">https://dorpn.com/#/room/</span><span style="color: #D32B92;">QNkvcP/</span><span style="color: #b89c3f;">1234</span>
         <hr style="margin-bottom: 5px; margin-left: -5px;" />
         <div style="color: #3fb2b8;">Common to all room links</div>
         <div style="color: #D32B92;">A random number that is unique to every room. Acts a safe
