@@ -38,6 +38,8 @@
       "parser": "babel-eslint"
     },
     "rules": {
+      "max-len": "off",
+      "no-console": "off",
       "vue/require-v-for-key": "off",
       "vue/html-closing-bracket-newline": "error",
       "vue/html-closing-bracket-spacing": "error",
