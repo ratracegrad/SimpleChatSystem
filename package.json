@@ -39,11 +39,10 @@
     },
     "rules": {
       "max-len": "off",
-      "no-console": "off",
+      "no-undef": "off",
       "vue/require-v-for-key": "off",
       "vue/html-closing-bracket-newline": "error",
       "vue/html-closing-bracket-spacing": "error",
-      "vue/html-indent": "error",
       "vue/mustache-interpolation-spacing": "error",
       "vue/no-spaces-around-equal-signs-in-attribute": "error",
       "vue/no-template-shadow": "error",
