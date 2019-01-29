@@ -56,7 +56,7 @@ export default {
         this.$nextTick(() => {
           document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
         });
-      } else if (!this.window.hasFocus) {
+      } else if (!window.hasFocus) {
         new Notification(`${this.messages[this.messages.length - 1].username} sent a new message to ${this.roomName}`,
           { body: this.messages[this.messages.length - 1].message },
         );
