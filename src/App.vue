@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import particlesJS from 'particles.js';
+
 export default {
   name: 'app',
 };

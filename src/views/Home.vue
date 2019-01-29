@@ -35,29 +35,29 @@ export default {
   data() {
     return {
       frozenQuotes: [
-        "There it is, the door you love to slam in my face!",
-        "Love is an open door!",
-        "This icy force, both foul and fair, has a frozen heart worth mining",
-        "Beware the frozen heart",
-        "Conceal don't feel, don't let them know",
-        "Some people are worth melting for",
-        "The past is in the past",
-        "Reindeers are better than people",
-        "The heart is not so easily changed, but the head can be persuaded",
-        "You can't marry a man you just met",
-        "Love is putting someone else’s needs before yours",
-        "The hot and the cold are both so intense, but them together it just makes sense",
-        "The sky's awake, so I'm awake",
-        "I know it all ends tomorrow, so it has to be today",
-        "People make bad choices if they're mad or scared or stressed",
-        "Life's too short to waste another minute",
+        'There it is, the door you love to slam in my face!',
+        'Love is an open door!',
+        'This icy force, both foul and fair, has a frozen heart worth mining',
+        'Beware the frozen heart',
+        'Conceal don\'t feel, don\'t let them know',
+        'Some people are worth melting for',
+        'The past is in the past',
+        'Reindeers are better than people',
+        'The heart is not so easily changed, but the head can be persuaded',
+        'You can\'t marry a man you just met',
+        'Love is putting someone else’s needs before yours',
+        'The hot and the cold are both so intense, but them together it just makes sense',
+        'The sky\'s awake, so I\'m awake',
+        'I know it all ends tomorrow, so it has to be today',
+        'People make bad choices if they\'re mad or scared or stressed',
+        'Life\'s too short to waste another minute',
       ],
-      frozenQuote: "Random Frozen Quotes",
+      frozenQuote: 'Random Frozen Quotes',
     };
   },
   methods: {
     updateQuote() {
-      var quoteNum = Math.floor(Math.random() * this.frozenQuotes.length);
+      let quoteNum = Math.floor(Math.random() * this.frozenQuotes.length);
       while (this.frozenQuotes[quoteNum] === this.frozenQuote) {
         quoteNum = Math.floor(Math.random() * this.frozenQuotes.length);
       }

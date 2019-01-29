@@ -2,7 +2,7 @@
   <div class="main-div">
     <Particles></Particles>
     <input ref="focus" v-model="search" type="text" placeholder="Search for your room here" name="roomName" autocomplete="off" />
-    <div v-for="(match, index) in rooms.filter(room => room.toLowerCase().includes(search.toLowerCase()))" class="room" v-bind:class="buttonClass(index)" @click="showPopup(match)">{{ match }}</div>
+    <div v-for="(match, index) in rooms.filter(room => room.toLowerCase().includes(search.toLowerCase()))" class="room" :class="buttonClass(index)" @click="showPopup(match)">{{ match }}</div>
     <form v-if="askPassword" class="popup" @submit.prevent="join">
       <input ref="passwordFocus" v-model="password" type="password" placeholder="Password" name="password" autocomplete="off" />
       <div v-if="errorText" class="errorText">{{ errorText }}</div>

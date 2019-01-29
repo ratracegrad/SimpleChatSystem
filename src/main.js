@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import particlesJS from 'particles.js';
 import App from './App.vue';
 import router from './router';
 
