@@ -3,9 +3,9 @@
     <Particles></Particles>
     <div class="main-div">
       <div id="left">
-        <a class="profile" href="mailto:chingtheprogrammer@icloud.com">
+        <a class="profile" href="mailto:chingtheprogrammer@gmail.com">
           <h1>Ching</h1>
-          chingtheprogrammer@icloud.com
+          chingtheprogrammer@gmail.com
         </a>
       </div>
       <div id="right">
