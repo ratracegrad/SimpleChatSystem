@@ -1,4 +1,4 @@
-# SimpleChatSystem (Dorpn is the production model)
+# Dorpn
 
 [Working site here!](https://www.dorpn.com)
 
