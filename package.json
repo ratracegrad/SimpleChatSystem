@@ -9,16 +9,16 @@
   },
   "dependencies": {
     "@firebase/app": "^0.3.17",
-    "@firebase/firestore": "^1.4.7",
+    "@firebase/firestore": "^1.2.2",
     "particles.js": "^2.0.0",
     "vue": "^2.6.10",
-    "vue-router": "^3.0.7"
+    "vue-router": "^3.0.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",
     "@vue/cli-plugin-eslint": "^3.9.0",
     "@vue/cli-service": "^3.9.0",
-    "@vue/eslint-config-airbnb": "^4.0.1",
+    "@vue/eslint-config-airbnb": "^4.0.0",
     "babel-eslint": "^10.0.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.3",
