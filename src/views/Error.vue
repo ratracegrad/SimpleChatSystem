@@ -9,7 +9,7 @@
 import Particles from '@/components/ParticlesJS.vue';
 
 export default {
-  name: 'error',
+  name: 'Error',
   components: { Particles },
 };
 </script>

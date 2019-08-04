@@ -46,7 +46,7 @@ export default new Router({
       component: Room,
     },
     {
-      path: '*',
+      path: '/error',
       name: 'Error',
       component: () => import('./views/Error.vue'),
     },

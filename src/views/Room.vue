@@ -14,7 +14,7 @@
     <div v-if="!enterName || deletePrompt" class="cancel" @click="cancel"></div>
     <div id="room-name">{{ roomName }}</div>
     <div id="room-link" @click="copy">Share Room Link</div>
-    <!-- <div class="deleteButton" @click="askDelete">Delete Room</div> -->
+    <div class="deleteButton" @click="askDelete">Delete Room</div>
     <div v-if="copied" id="copied-popup">Link Copied</div>
     <div id="io-box">
       <div id="output">
@@ -81,16 +81,16 @@ export default {
           }
           if (change.doc.data().password) {
             if (this.password !== change.doc.data().password) {
-              this.$router.push({ name: 'error' });
+              this.$router.push({ name: 'Error' });
             }
           }
         });
         if (this.messages.length === 0 && !this.created) {
-          this.$router.push({ name: 'error' });
+          this.$router.push({ name: 'Error' });
         }
       });
     } else {
-      this.$router.push({ name: 'error' });
+      this.$router.push({ name: 'Error' });
     }
   },
   mounted() {

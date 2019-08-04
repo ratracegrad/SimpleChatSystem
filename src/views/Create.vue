@@ -69,7 +69,7 @@ export default {
           this.randomString += this.possible.charAt(Math.floor(Math.random() * this.possible.length));
         }
         this.$router.push({
-          name: 'room',
+          name: 'Room',
           params: {
             roomName: this.roomName, randomString: this.randomString, password: this.password, created: true,
           },

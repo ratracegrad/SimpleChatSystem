@@ -56,7 +56,7 @@ export default {
     join() {
       fb.collection('Rooms').onSnapshot((snapshot) => {
         if (this.password === snapshot.docChanges()[this.rooms.indexOf(this.room)].doc.data().password) {
-          this.$router.push({ name: 'room', params: { randomString: snapshot.docChanges()[this.rooms.indexOf(this.room)].doc.data().randomString, password: this.password } });
+          this.$router.push({ name: 'Room', params: { randomString: snapshot.docChanges()[this.rooms.indexOf(this.room)].doc.data().randomString, password: this.password } });
         } else {
           this.errorText = 'Incorrect password';
         }
