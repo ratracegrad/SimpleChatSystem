@@ -6,4 +6,4 @@
 Create your own text room in seconds and begin the conversation
 
 
-[Join our public beta chat here](https://dorpn.com/room/QNkvcP/1234)
+[Join our public beta chat here](https://www.dorpn.com/room/QNkvcP/1234)
